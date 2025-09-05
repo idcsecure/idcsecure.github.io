@@ -1,179 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IDC — The Internet Defense Company</title>
-  <meta name="description" content="The Internet Defense Company (IDC): Network penetration testing, Web application security testing, and Cybersecurity awareness training." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDC | The Internet Defense Company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0A0A0A;
+            --text-color: #E0E0E0;
+            --accent-color: #00FF7F; /* Hacker Green */
+            --muted-color: #888888;
+            --border-color: #222222;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- Header & Logo --- */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo {
+            width: 40px; /* Reduced logo size */
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .nav a {
+            color: var(--muted-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Main Content --- */
+        main {
+            padding: 3rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        h1 .accent {
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--muted-color);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Services List --- */
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .services-list li {
+            background-color: #111;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .services-list h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .services-list p {
+            margin: 0;
+            color: var(--muted-color);
+        }
+
+        /* --- Call to Action --- */
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+        
+        /* --- Mobile Adjustments --- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            .nav a {
+                margin-left: 0;
+                margin-right: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="scanline"></div>
-  <header class="site-header">
-    <a href="#" class="brand">
-      <img src="copilot_image_1757074998678.jpeg" alt="IDC Logo" class="logo" />
-      <div class="brand-text">
-        <span class="brand-acronym">IDC</span>
-        <span class="brand-name">The Internet Defense Company</span>
-      </div>
-    </a>
-    <nav class="nav">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#contact" class="cta">Get Audit</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero" id="home" aria-label="Hero">
-      <div class="hero-inner">
-        <h1><span class="glitch" data-text="Hackers for Hire">Hackers for Hire</span></h1>
-        <p class="subtitle">Offensive security to harden networks, apps, and people. Red-team mindset. Real-world impact. <span class="cursor">_</span></p>
-        <div class="hero-actions">
-          <a href="#services" class="btn primary">View Services</a>
-          <a href="#contact" class="btn ghost">Request Proposal</a>
-        </div>
-        <div class="terminal" aria-label="Live terminal">
-<pre id="terminal-output">
-$ nmap -Pn -sC -sV target.local
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 9.x
-80/tcp open  http    nginx
-443/tcp open  https   tls1.3
-$ gobuster dir -u https://target.local -w /wordlists/common.txt
-/admin
-/login
-/api/v1
-$ idc-exploit --chain privesc,sqli,xss --report
-[+] Attack surface mapped
-[+] Exec path found
-[+] Remediation prepared
-</pre>
-        </div>
-      </div>
-      <div class="grid-overlay" aria-hidden="true"></div>
-    </section>
+    <div class="container">
 
-    <section id="services" class="section services">
-      <h2><span class="section-kicker">// services</span> What we do</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon"></div>
-          <h3>Network Penetration Testing</h3>
-          <p>External and internal assessments to identify exposures across hosts, services, and Active Directory. Includes exploit validation and clear remediation guidance.</p>
-          <ul class="bullets">
-            <li>External & internal attack simulation</li>
-            <li>AD & lateral movement checks</li>
-            <li>Exploit validation, CVSS mapping</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon"></div>
-          <h3>Web App Security Testing</h3>
-          <p>Manual-first testing aligned to OWASP Top 10 and business logic abuse, with authenticated flows, API coverage, and reproducible PoCs.</p>
-          <ul class="bullets">
-            <li>OWASP Top 10 + logic abuse</li>
-            <li>Auth, session, access control</li>
-            <li>API fuzzing and SSRF checks</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon">󰞋</div>
-          <h3>Cybersecurity Awareness Training</h3>
-          <p>Role-based simulations and training modules that turn human risk into human defense, with measurable uplift and phishing resilience.</p>
-          <ul class="bullets">
-            <li>Phish simulations & metrics</li>
-            <li>Role-based content paths</li>
-            <li>Executive-ready reporting</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+        <header class="site-header">
+            <a href="#" class="brand">
+                <img src="copilot_image_1757074998678.jpeg" alt="IDC Logo" class="logo">
+                <span class="company-name">The Internet Defense Co.</span>
+            </a>
+            <nav class="nav">
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-    <section id="about" class="section about">
-      <h2><span class="section-kicker">// about</span> Why IDC</h2>
-      <div class="about-grid">
-        <div>
-          <h3>Offensive by design</h3>
-          <p>Built by practitioners focused on offensive security since 2023; we treat every engagement like a real adversary with rules of engagement and impact-first findings.</p>
-        </div>
-        <div>
-          <h3>Reports leaders use</h3>
-          <p>Noise-free, prioritized, and mapped to frameworks (OWASP, MITRE ATT&CK, CIS), with business impact and fix-by instructions for quick wins and long-term hardening.</p>
-        </div>
-        <div>
-          <h3>Partnership mindset</h3>
-          <p>From scoping to retest, we collaborate with engineering and leadership to ensure fixes land, knowledge transfers, and resilience improves release over release.</p>
-        </div>
-      </div>
-    </section>
+        <main>
+            <h1>Digital Fortresses.<br><span class="accent">Built by Hackers.</span></h1>
+            <p class="subtitle">Offensive security to find and fix vulnerabilities before they're exploited.</p>
 
-    <section id="process" class="section process">
-      <h2><span class="section-kicker">// process</span> How we work</h2>
-      <ol class="steps">
-        <li><strong>Scope</strong> — define assets, rules, and success criteria.</li>
-        <li><strong>Recon</strong> — map attack surface, enumerate services and flows.</li>
-        <li><strong>Exploit</strong> — validate risk with safe proof-of-concepts.</li>
-        <li><strong>Report</strong> — prioritize fixes with clear guidance.</li>
-        <li><strong>Retest</strong> — verify remediation and close the loop.</li>
-      </ol>
-    </section>
+            <section id="services">
+                <h2>// Our Services</h2>
+                <ul class="services-list">
+                    <li>
+                        <h3>Network Penetration Testing</h3>
+                        <p>Simulating real-world attacks to identify and secure vulnerabilities in your network infrastructure.</p>
+                    </li>
+                    <li>
+                        <h3>Web Application Security Testing</h3>
+                        <p>In-depth testing of web applications to uncover flaws from the OWASP Top 10 and beyond.</p>
+                    </li>
+                    <li>
+                        <h3>Cybersecurity Awareness Training</h3>
+                        <p>Empowering your team to recognize and respond to threats like phishing and social engineering.</p>
+                    </li>
+                </ul>
+            </section>
 
-    <section id="contact" class="section contact">
-      <h2><span class="section-kicker">// contact</span> Engage IDC</h2>
-      <form class="contact-form" id="contact-form" onsubmit="return false;">
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Jane Doe" required />
-        </div>
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="jane@company.com" required />
-        </div>
-        <div class="form-row">
-          <label for="service">Service</label>
-          <select id="service" name="service" required>
-            <option value="">Select a service…</option>
-            <option>Network Penetration Testing</option>
-            <option>Web Application Security Testing</option>
-            <option>Cybersecurity Awareness Training</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Share scope, objectives, timelines…"></textarea>
-        </div>
-        <button class="btn primary" id="send-btn">Request Proposal</button>
-        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-      </form>
+            <section id="contact" class="cta-section">
+                <h2>Secure Your Assets</h2>
+                <a href="mailto:contact@idc-sec.com" class="cta-button">Request an Audit</a>
+            </section>
 
-      <div class="contact-meta">
-        <div class="meta-item">
-          <span class="meta-label">Email</span>
-          <a href="mailto:contact@idc-sec.com">contact@idc-sec.com</a>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Location</span>
-          <span>Remote • Global</span>
-        </div>
-      </div>
-    </section>
-  </main>
+        </main>
 
-  <footer class="site-footer">
-    <div>© <span id="year"></span> IDC — The Internet Defense Company</div>
-    <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
+        <footer class="site-footer">
+            <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+        </footer>
+
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <script>
+        // Set current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
