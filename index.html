@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDC | The Internet Defense Company</title>
+    <title>The Internet Defense Company</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
             transition: color 0.2s ease;
         }
 
-        .nav a:hover {
+        .nav a:hover, .nav a.active {
             color: var(--accent-color);
         }
 
@@ -162,10 +162,10 @@
             font-size: 0.9rem;
         }
         
-        /* --- Mobile Adjustments --- */
-        @media (max-width: 600px) {
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
             .container {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
             .site-header {
@@ -175,18 +175,78 @@
             }
 
             .nav {
+                display: none; /* Hide nav, show hamburger */
                 width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav.open {
                 display: flex;
-                justify-content: flex-start;
             }
 
             .nav a {
-                margin-left: 0;
-                margin-right: 1.5rem;
+                margin: 0;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var(--accent-color);
             }
 
             h1 {
                 font-size: 2rem;
+            }
+
+            .services-list {
+                display: block;
+            }
+
+            .services-list li {
+                padding: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 1.2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .container {
+                max-width: 900px;
+            }
+
+            .services-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {    
+                max-width: 1200px;
+                padding: 3rem;
+            }
+
+            .services-list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -198,40 +258,22 @@
         <header class="site-header">
             <a href="#" class="brand">
                 <img src="copilot_image_1757074998678.jpeg" alt="IDC Logo" class="logo">
-                <span class="company-name">The Internet Defense Co.</span>
+                <span class="company-name">The Internet Defense Company</span>
             </a>
             <nav class="nav">
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
+                <a href="#">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
             </nav>
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
         </header>
 
         <main>
-            <h1>Digital Fortresses.<br><span class="accent">Built by Hackers.</span></h1>
-            <p class="subtitle">Offensive security to find and fix vulnerabilities before they're exploited.</p>
+            <h1>Helping businesses<br><span class="accent">Find vulnerabilities.</span></h1>
+            <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
 
-            <section id="services">
-                <h2>// Our Services</h2>
-                <ul class="services-list">
-                    <li>
-                        <h3>Network Penetration Testing</h3>
-                        <p>Simulating real-world attacks to identify and secure vulnerabilities in your network infrastructure.</p>
-                    </li>
-                    <li>
-                        <h3>Web Application Security Testing</h3>
-                        <p>In-depth testing of web applications to uncover flaws from the OWASP Top 10 and beyond.</p>
-                    </li>
-                    <li>
-                        <h3>Cybersecurity Awareness Training</h3>
-                        <p>Empowering your team to recognize and respond to threats like phishing and social engineering.</p>
-                    </li>
-                </ul>
-            </section>
-
-            <section id="contact" class="cta-section">
-                <h2>Secure Your Assets</h2>
-                <a href="mailto:contact@idc-sec.com" class="cta-button">Request an Audit</a>
-            </section>
+            <p>Welcome to The Internet Defense Company. Explore our services and learn more about how we can help secure your business.</p>
 
         </main>
 
@@ -244,6 +286,22 @@
     <script>
         // Set current year in the footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Toggle navigation menu for mobile
+        function toggleNav() {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('open');
+        }
+
+        // Highlight current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#') {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 
 </body>
