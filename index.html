@@ -1,8 +1,26 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>The Internet Defense Company</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> [1] <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> [1] <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" /> [1] <style> :root { --bg-color: #0a0a0a; --text-color: #e0e0e0; --accent-color: #00ff7f; --muted-color: #888888; --border-color: #222222; }/* Global guards for responsive layout */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Internet Defense Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #e0e0e0;
+  --accent-color: #00ff7f;
+  --muted-color: #888888;
+  --border-color: #222222;
+}
+/* Global guards for responsive layout */
 *,
 *::before,
-*::after { box-sizing: border-box; } /* prevents accidental overflow on small screens */ /* [1] */
-html, body { overflow-x: hidden; } /* avoids horizontal scroll due to subpixel rounding */ /* [1] */
+*::after { box-sizing: border-box; }
+
+html, body { overflow-x: hidden; }
 
 body {
   background-color: var(--bg-color);
@@ -16,7 +34,7 @@ body {
 }
 
 /* Media responsive defaults */
-img, svg, video, canvas { max-width: 100%; height: auto; } /* responsive media */ /* [1] */
+img, svg, video, canvas { max-width: 100%; height: auto; }
 
 .container {
   max-width: 800px;
@@ -38,7 +56,7 @@ img, svg, video, canvas { max-width: 100%; height: auto; } /* responsive media *
   gap: 15px;
   text-decoration: none;
   color: var(--text-color);
-  min-width: 0; /* allow text to truncate/wrap without pushing layout */ /* [1] */
+  min-width: 0;
 }
 
 .logo {
@@ -51,7 +69,7 @@ img, svg, video, canvas { max-width: 100%; height: auto; } /* responsive media *
 .company-name {
   font-weight: 700;
   font-size: 1.2rem;
-  overflow-wrap: anywhere; /* safe wrapping for long names */ /* [1] */
+  overflow-wrap: anywhere;
 }
 
 .nav {
@@ -115,7 +133,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  min-width: 0; /* grid items can shrink within container */ /* [1] */
+  min-width: 0;
 }
 
 .services-list li {
@@ -124,7 +142,7 @@ h2 {
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  overflow-wrap: anywhere; /* keep long lines from overflowing cards */ /* [1] */
+  overflow-wrap: anywhere;
 }
 
 .services-list h3 {
@@ -154,7 +172,7 @@ h2 {
   font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   max-width: 100%;
-  white-space: normal; /* allow wrapping to prevent overflow */ /* [1] */
+  white-space: normal;
 }
 
 .cta-button:hover {
@@ -175,7 +193,7 @@ h2 {
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding: 1rem; /* consistent with pricing mobile feel */ /* [1] */
+    padding: 1rem;
   }
   .site-header {
     flex-direction: column;
@@ -200,7 +218,7 @@ h2 {
     display: block;
   }
   main {
-    padding: 1.5rem 0; /* reduce vertical space for compact view */ /* [1] */
+    padding: 1.5rem 0;
   }
   h1 {
     font-size: 2rem;
@@ -222,7 +240,7 @@ h2 {
 @media (min-width: 769px) and (max-width: 1199px) {
   .container {
     max-width: 1200px;
-    padding: 2rem; /* slightly lighter than desktop to avoid crowding */ /* [1] */
+    padding: 2rem;
   }
   .services-list {
     grid-template-columns: repeat(2, 1fr);
@@ -246,34 +264,73 @@ h2 {
     font-size: 1.3rem;
   }
 }
-</style> </head> <body> <div class="container"> <header class="site-header"> <a href="index.html" class="brand"> <img src="idc_logo.jpg" alt="IDC Logo" class="logo" /> <span class="company-name">The Internet Defense Company</span> </a> <nav class="nav"> <a href="index.html">Home</a> <a href="about.html">About</a> <a href="pricing.html">Pricing</a> <a href="contact.html">Contact</a> </nav> <div class="hamburger" onclick="toggleNav()">☰</div> </header>
-<main>
-  <h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
-  <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
-  <p>Welcome to IDC secure. Explore our services and learn more about how we can help secure your business.</p>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <img src="idc_logo.jpg" alt="IDC Logo" class="logo" />
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" onclick="toggleNav()">☰</div>
+    </header>
+    <main>
+      <h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
+      <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
+      <p>Welcome to IDC secure. Explore our services and learn more about how we can help secure your business.</p>
 
-  <h2>Services</h2>
-  <ul class="services-list">
-    <li>
-      <h3>Network Penetration Testing</h3>
-      <p>Conducting simulated attacks on your network to identify vulnerabilities and deliver comprehensive recommendations that strengthen your security posture against real-world threats.</p>
-    </li>
-    <li>
-      <h3>Web Application Security Testing</h3>
-      <p>Thoroughly assessing web applications to identify vulnerabilities like SQL injection and cross-site scripting, with actionable recommendations to protect critical business data.</p>
-    </li>
-    <li>
-      <h3>Security Awareness Session</h3>
-      <p>Empowering employees with up-to-date cybersecurity knowledge and best practices to reduce human risk, prevent phishing, and foster a strong security culture.</p>
-    </li>
-  </ul>
+      <h2>Services</h2>
+      <ul class="services-list">
+        <li>
+          <h3>Network Penetration Testing</h3>
+          <p>Conducting simulated attacks on your network to identify vulnerabilities and deliver comprehensive recommendations that strengthen your security posture against real-world threats.</p>
+        </li>
+        <li>
+          <h3>Web Application Security Testing</h3>
+          <p>Thoroughly assessing web applications to identify vulnerabilities like SQL injection and cross-site scripting, with actionable recommendations to protect critical business data.</p>
+        </li>
+        <li>
+          <h3>Security Awareness Session</h3>
+          <p>Empowering employees with up-to-date cybersecurity knowledge and best practices to reduce human risk, prevent phishing, and foster a strong security culture.</p>
+        </li>
+      </ul>
 
-  <div class="cta-section">
-    <a href="contact.html" class="cta-button">Get Started</a>
+      <div class="cta-section">
+        <a href="contact.html" class="cta-button">Get Started</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+    </footer>
   </div>
-</main>
+  <script>
+    // Set footer year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<footer class="site-footer">
-  <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
-</footer>
-</div> <script> // Set footer year dynamically document.getElementById('year').textContent = new Date().getFullYear(); // [1] // Toggle mobile navigation function toggleNav() { const nav = document.querySelector('.nav'); nav.classList.toggle('open'); // [2][3][4] } // Highlight active navigation link document.addEventListener('DOMContentLoaded', function () { const navLinks = document.querySelectorAll('.nav a'); const currentPage = window.location.pathname.split('/').pop(); navLinks.forEach(link => { if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) { link.classList.add('active'); // [2][3] } }); }); </script> </body> </html> 
+    // Toggle mobile navigation
+    function toggleNav() {
+      const nav = document.querySelector('.nav');
+      nav.classList.toggle('open');
+    }
+
+    // Highlight active navigation link
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('.nav a');
+      const currentPage = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
