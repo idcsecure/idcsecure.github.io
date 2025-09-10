@@ -63,8 +63,7 @@
       margin-left: 1.5rem;
       transition: color 0.2s ease;
     }
-    .nav a:hover,
-    .nav a.active {
+    .nav a:hover, .nav a.active {
       color: var(--accent-color);
     }
     .founder-note-btn {
@@ -83,22 +82,16 @@
       padding: 0.4rem 1.1rem;
       margin-right: 0;
       z-index: 10;
-      /* Glow animation */
       box-shadow: 0 0 8px 0 var(--accent-color), 0 0 18px 0 rgba(0,255,127,0.2);
       animation: glow-dim 1.3s infinite alternate;
     }
     @keyframes glow-dim {
       0% {
-        box-shadow:
-          0 0 10px 2px #00ff7f,
-          0 0 24px 6px rgba(0,255,127,0.5),
-          0 0 40px 12px rgba(0,255,127,0.3);
+        box-shadow: 0 0 10px 2px #00ff7f, 0 0 24px 6px rgba(0,255,127,0.5), 0 0 40px 12px rgba(0,255,127,0.3);
         color: #fff;
       }
       100% {
-        box-shadow:
-          0 0 3px 1px #00ff7f,
-          0 0 6px 2px rgba(0,255,127,0.2);
+        box-shadow: 0 0 3px 1px #00ff7f, 0 0 6px 2px rgba(0,255,127,0.2);
         color: var(--accent-color);
       }
     }
@@ -106,9 +99,7 @@
       color: #00cc66;
       text-decoration: underline;
       animation: none;
-      box-shadow:
-        0 0 16px 4px #00ff7f,
-        0 0 32px 14px rgba(0,255,127,0.4);
+      box-shadow: 0 0 16px 4px #00ff7f, 0 0 32px 14px rgba(0,255,127,0.4);
     }
     .hamburger {
       display: none;
@@ -140,8 +131,10 @@
       display: none;
       position: fixed;
       z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
       overflow: auto;
       background-color: rgba(0,0,0,0.7);
     }
@@ -177,76 +170,145 @@
       color: var(--muted-color);
       font-size: 0.9rem;
     }
-    @media (max-width: 1050px) {
-      .container { padding: 1rem; }
-      .plan { padding: 1.1rem; }
-    }
+    /* Mobile styles */
     @media (max-width: 768px) {
       .container { padding: 1rem; }
-      .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .nav { flex-direction: column; width: 100%; }
-      .nav a { margin-left: 0; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); }
-      .founder-note-btn {
-        position: static;
-        margin-top: 1rem;
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .nav {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+      .nav.open { display: flex; }
+      .nav a {
         margin-left: 0;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
       }
       .hamburger { display: block; }
       h1 { font-size: 2rem; }
+      .founder-note-btn { position: static; margin-top: 1rem; margin-left: 0; }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <header class="site-header">
-    <a href="index.html" class="brand">
-      <img src="idc_logo.jpg" alt="IDC Logo" class="logo" />
-      <span class="company-name">The Internet Defense Company</span>
-    </a>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="hamburger" onclick="toggleNav()">☰</div>
-    <button id="founder-note-link" class="founder-note-btn">Founder’s Note</button>
-  </header>
-  <main>
-    <h1>About <span class="accent">IDC</span></h1>
-    <section id="about">
-      <p>
-        The Internet Defence Company (IDC) is here to make cybersecurity simple and reliable for businesses that are building their future. We focus on helping startups and growing companies stay safe as they expand in today’s connected world.
-        <br><br>
-        Our core service is penetration testing — a proactive way to spot weaknesses in websites and networks before attackers do. We keep things straightforward, delivering clear insights and practical recommendations that make sense for your business.
-        <br><br>
-        But we don’t stop at technology. People are just as important, which is why we also run cybersecurity awareness sessions for teams. These sessions equip employees with the knowledge to recognize scams, avoid online threats, and build everyday security habits.
-      </p>
-    </section>
-
-    <h2>Why Choose us?</h2>
-    <ul>
-      <li><strong>Focused on Small Businesses</strong> – We understand the needs of startups and growing companies, keeping our services practical and affordable.</li>
-      <li><strong>Clear and Actionable Reports</strong> – No confusing jargon. We provide straightforward findings and simple steps to fix them.</li>
-      <li><strong>People-First Approach</strong> – Along with testing, we train your team to spot scams and avoid online risks.</li>
-      <li><strong>Trusted Partnership</strong> – We work with you, not just for you — making sure your business grows with confidence.</li>
-    </ul>
-
-    <!-- Modal for the Founder's Note -->
-    <div id="founder-note-modal" class="modal">
-      <div class="modal-content">
-        <span id="modal-close" class="modal-close">&times;</span>
-        <p><u>09-09-2025</u><br>
-          I am currently pursuing my studies in cybersecurity in India and have gained almost 3 years of experience in this field. While studying, I found it challenging to secure jobs and internships despite holding certifications like CEH. To apply my skills and build professional experience, I started The Internet Defense Company (IDC), where I provide penetration testing and security services to small businesses. I manage IDC part-time alongside my studies. I hope to grow IDC into a reputable security testing company over the coming years...
+  <div class="container">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <img src="idc_logo.jpg" alt="IDC Logo" class="logo" />
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+      <button id="founder-note-link" class="founder-note-btn">Founder’s Note</button>
+    </header>
+    <main>
+      <h1>About <span class="accent">IDC</span></h1>
+      <section id="about">
+        <p>
+          The Internet Defence Company (IDC) is here to make cybersecurity simple and reliable for businesses that are building their future. We focus on helping startups and growing companies stay safe as they expand in today’s connected world.
+          <br><br>
+          Our core service is penetration testing — a proactive way to spot weaknesses in websites and networks before attackers do. We keep things straightforward, delivering clear insights and practical recommendations that make sense for your business.
+          <br><br>
+          But we don’t stop at technology. People are just as important, which is why we also run cybersecurity awareness sessions for teams. These sessions equip employees with the knowledge to recognize scams, avoid online threats, and build everyday security habits.
         </p>
+      </section>
+      <h2>Why Choose us?</h2>
+      <ul>
+        <li><strong>Focused on Small Businesses</strong> – We understand the needs of startups and growing companies, keeping our services practical and affordable.</li>
+        <li><strong>Clear and Actionable Reports</strong> – No confusing jargon. We provide straightforward findings and simple steps to fix them.</li>
+        <li><strong>People-First Approach</strong> – Along with testing, we train your team to spot scams and avoid online risks.</li>
+        <li><strong>Trusted Partnership</strong> – We work with you, not just for you — making sure your business grows with confidence.</li>
+      </ul>
+      <!-- Modal for the Founder's Note -->
+      <div id="founder-note-modal" class="modal">
+        <div class="modal-content">
+          <span id="modal-close" class="modal-close">&times;</span>
+          <p><u>09-09-2025</u><br>
+            I am currently pursuing my studies in cybersecurity in India and have gained almost 3 years of experience in this field. While studying, I found it challenging to secure jobs and internships despite holding certifications like CEH. To apply my skills and build professional experience, I started The Internet Defense Company (IDC), where I provide penetration testing and security services to small businesses. I manage IDC part-time alongside my studies. I hope to grow IDC into a reputable security testing company over the coming years...
+          </p>
+        </div>
       </div>
-    </div>
-  </main>
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
-  </footer>
-</div>
-<script> // Year document.getElementById('year').textContent = new Date().getFullYear(); // [3] // Toggle mobile navigation function toggleNav() { const nav = document.querySelector('.nav'); nav.classList.toggle('open'); const burger = document.querySelector('.hamburger'); burger.setAttribute('aria-expanded', nav.classList.contains('open')); // [4] } // Setup after DOM loads document.addEventListener('DOMContentLoaded', function () { const nav = document.querySelector('.nav'); const burger = document.querySelector('.hamburger'); const navLinks = document.querySelectorAll('.nav a'); // Highlight active navigation link const currentPage = window.location.pathname.split('/').pop(); navLinks.forEach(link => { if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) { link.classList.add('active'); } }); // [1] // Close on link click (common mobile UX) navLinks.forEach(link => { link.addEventListener('click', () => { if (nav.classList.contains('open')) { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } }); }); // [2] // Close when clicking outside the nav/burger document.addEventListener('click', (e) => { const clickedInsideNav = nav.contains(e.target); const clickedBurger = burger.contains(e.target); if (!clickedInsideNav && !clickedBurger && nav.classList.contains('open')) { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } }); // [1][3] // Close on Escape key document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } }); // [5][4] // Modal logic (unchanged) const modal = document.getElementById('founder-note-modal'); const openBtn = document.getElementById('founder-note-link'); const closeBtn = document.getElementById('modal-close'); if (openBtn && modal && closeBtn) { openBtn.onclick = function () { modal.style.display = 'block'; }; closeBtn.onclick = function () { modal.style.display = 'none'; }; window.onclick = function (event) { if (event.target === modal) { modal.style.display = 'none'; } }; } // [1] }); </script>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    // Set footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle mobile navigation
+    function toggleNav() {
+      const nav = document.querySelector('.nav');
+      const burger = document.querySelector('.hamburger');
+      nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', nav.classList.contains('open'));
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const nav = document.querySelector('.nav');
+      const burger = document.querySelector('.hamburger');
+      const navLinks = document.querySelectorAll('.nav a');
+
+      // Highlight active link
+      const currentPage = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
+          link.classList.add('active');
+        }
+      });
+
+      // Close nav on link click
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Close when clicking outside nav/hamburger
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = nav.contains(e.target);
+        const clickedBurger = burger.contains(e.target);
+        if (!clickedInsideNav && !clickedBurger && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close nav on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Modal logic
+      const modal = document.getElementById('founder-note-modal');
+      const openBtn = document.getElementById('founder-note-link');
+      const closeBtn = document.getElementById('modal-close');
+      if (openBtn && modal && closeBtn) {
+        openBtn.onclick = function () { modal.style.display = 'block'; };
+        closeBtn.onclick = function () { modal.style.display = 'none'; };
+        window.onclick = function (event) {
+          if (event.target === modal) { modal.style.display = 'none'; }
+        };
+      }
+    });
+  </script>
 </body>
 </html>
-
