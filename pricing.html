@@ -1,267 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pricing - IDC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-color: #0a0a0a;
-      --text-color: #e0e0e0;
-      --accent-color: #00ff7f;
-      --muted-color: #888888;
-      --border-color: #222222;
-    }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Roboto Mono', monospace;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem;
-    }
-    .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      color: var(--text-color);
-    }
-    .logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-    .company-name {
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-    .nav {
-      display: flex;
-    }
-    .nav a {
-      color: var(--muted-color);
-      text-decoration: none;
-      margin-left: 1.5rem;
-      transition: color 0.2s ease;
-    }
-    .nav a:hover,
-    .nav a.active {
-      color: var(--accent-color);
-    }
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--accent-color);
-    }
-    main {
-      padding: 3rem 0;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: var(--text-color);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-    h1 .accent {
-      color: var(--accent-color);
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    .plan {
-      background: #111;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: left;
-      box-shadow: 0 3px 16px rgba(0,0,0,0.05);
-      transition: box-shadow 0.2s;
-    }
-    .plan:hover {
-      box-shadow: 0 6px 24px rgba(0,255,127,0.10);
-    }
-    .plan-title {
-      color: var(--accent-color);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-    .plan-price {
-      font-size: 1.4rem;
-      color: var(--accent-color);
-      margin: 1.1rem 0 1rem 0;
-      font-weight: bold;
-    }
-    .plan-features {
-      list-style: disc inside;
-      color: var(--muted-color);
-      margin: 0 0 1.5rem 0;
-      padding: 0 0 0 1em;
-      font-size: 1.05rem;
-    }
-    .plan-features li {
-      margin: 0.55rem 0;
-    }
-    .note, .scope-section, .exclusions-section {
-      color: var(--muted-color);
-      font-size: 0.98rem;
-      margin-top: 2.5rem;
-      background: #141414;
-      padding: 1.2rem 1.3rem;
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-color);
-      margin-bottom: 2rem;
-    }
-    .scope-section ul {
-      list-style: disc inside;
-      margin: 0.65em 0 0.65em 1em;
-      padding: 0;
-    }
-    .scope-section li {
-      margin: 0.27em 0;
-    }
-    .site-footer {
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 2rem;
-      border-top: 1px solid var(--border-color);
-      color: var(--muted-color);
-      font-size: 0.9rem;
-    }
-    @media (max-width: 1050px) {
-      .container { padding: 1rem; }
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (min-width: 1051px) {
-      .pricing-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 768px) {
-      .container { padding: 1rem; }
-      h1 { font-size: 2rem; }
-      .plan { padding: 1.1rem; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header class="site-header">
-      <a href="index.html" class="brand">
-        <img src="idc_logo.jpg" alt="IDC Logo" class="logo" />
-        <span class="company-name">The Internet Defense Company</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="hamburger" onclick="toggleNav()">☰</div>
-    </header>
-    <main>
-      <h1>Our <span class="accent">Pricing Plans</span></h1>
-      <div class="pricing-grid">
-        <div class="plan">
-          <div class="plan-title">Web Application Pentest</div>
-          <div class="plan-price">Starting from 6000 INR*</div>
-          <ul class="plan-features">
-            <li>Testing for OWASP Top 10 vulnerabilities (SQLi, XSS, CSRF, IDOR, etc.)</li>
-            <li>Manual + automated analysis (Burp Suite, Nmap, custom scripts)</li>
-            <li>PDF report with:
-              <ul>
-                <li>Executive summary for management</li>
-                <li>Technical details for developers</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="plan">
-          <div class="plan-title">Network Pentest</div>
-          <div class="plan-price">Starting from 5000 INR*</div>
-          <ul class="plan-features">
-            <li>Internal & external vulnerability scans</li>
-            <li>Firewall, ports, and misconfiguration checks</li>
-            <li>Manual exploitation of critical flaws</li>
-            <li>PDF report with risk-based ranking & step-by-step fixes</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <div class="plan-title">Combined Package (Web + Network)</div>
-          <div class="plan-price">Starting from 10000 INR* <span style="color:var(--muted-color); font-size:1rem;">(discounted bundle)</span></div>
-          <ul class="plan-features">
-            <li>Full Web Application Pentest</li>
-            <li>Full Network Pentest</li>
-            <li>Consolidated PDF report (exec + technical sections)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="scope-section">
-        *Final pricing depends on the scope of the assessment, including:
-        <ul>
-          <li>Number of domains / subdomains for web app testing</li>
-          <li>Number of IP addresses / network devices for network testing</li>
-          <li>Size &amp; complexity of the infrastructure</li>
-          <li>Depth of testing required (automated only vs. deeper manual testing)</li>
-        </ul>
-      </div>
-      <div class="exclusions-section">
-        <p><strong>📑 Authorization Required:</strong> Testing will only begin after receiving written approval from the client.</p>
-        <p><strong>🔄 Retesting:</strong> One free retest is included per engagement. Additional retests may incur extra charges.</p>
-        <p><strong>🛡️ Exclusions:</strong> Unless explicitly approved, testing will not include Denial-of-Service (DoS), physical security, or social engineering.</p>
-        <p><strong>📆 Timeline:</strong> Typical testing duration is 3–7 business days, with reports delivered within 5–10 business days after testing.</p>
-        <p><strong>🎯 Custom Engagements:</strong> Large networks, multiple applications, or specialized requirements (e.g., cloud, APIs) will receive a tailored proposal and pricing.</p>
-      </div>
-      <div class="cta-section" style="text-align: center;">
-        <a href="contact.html" class="cta-button">Get Your Free Consultation</a>
-      </div>
-    </main>
-    <footer class="site-footer">
-      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
-    </footer>
-  </div>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function toggleNav() {
-      const nav = document.querySelector('.nav');
-      nav.classList.toggle('open');
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      const navLinks = document.querySelectorAll('.nav a');
-      const currentPage = window.location.pathname.split('/').pop();
-      navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Pricing - IDC</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" /> <style> :root { --bg-color: #0a0a0a; --text-color: #e0e0e0; --accent-color: #00ff7f; --muted-color: #888888; --border-color: #222222; } body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Roboto Mono', monospace; margin: 0; padding: 0; line-height: 1.7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } .container { max-width: 1200px; margin: 0 auto; padding: 3rem; } .site-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); } .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-color); } .logo { width: 40px; height: 40px; object-fit: contain; } .company-name { font-weight: 700; font-size: 1.2rem; } .nav { display: flex; } .nav a { color: var(--muted-color); text-decoration: none; margin-left: 1.5rem; transition: color 0.2s ease; } .nav a:hover, .nav a.active { color: var(--accent-color); } .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--accent-color); } main { padding: 3rem 0; } h1 { font-size: 2.5rem; color: var(--text-color); margin-bottom: 0.5rem; line-height: 1.2; } h1 .accent { color: var(--accent-color); } .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; margin-bottom: 2rem; } .plan { background: #111; border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: left; box-shadow: 0 3px 16px rgba(0,0,0,0.05); transition: box-shadow 0.2s; } .plan:hover { box-shadow: 0 6px 24px rgba(0,255,127,0.10); } .plan-title { color: var(--accent-color); font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px; } .plan-price { font-size: 1.4rem; color: var(--accent-color); margin: 1.1rem 0 1rem 0; font-weight: bold; } .plan-features { list-style: disc inside; color: var(--muted-color); margin: 0 0 1.5rem 0; padding: 0 0 0 1em; font-size: 1.05rem; } .plan-features li { margin: 0.55rem 0; } .note, .scope-section, .exclusions-section { color: var(--muted-color); font-size: 0.98rem; margin-top: 2.5rem; background: #141414; padding: 1.2rem 1.3rem; border-radius: 8px; border-left: 3px solid var(--accent-color); margin-bottom: 2rem; } .scope-section ul { list-style: disc inside; margin: 0.65em 0 0.65em 1em; padding: 0; } .scope-section li { margin: 0.27em 0; } .site-footer { text-align: center; padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--muted-color); font-size: 0.9rem; }
+text
+/* Mobile enhancements */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    margin-left: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .hamburger {
+    display: block;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .plan {
+    padding: 1.1rem;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
+/* Wide screens: keep existing 3-column layout */
+@media (min-width: 1051px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style> </head> <body> <div class="container"> <header class="site-header"> <a href="index.html" class="brand"> <img src="idc_logo.jpg" alt="IDC Logo" class="logo" /> <span class="company-name">The Internet Defense Company</span> </a> <nav class="nav"> <a href="index.html">Home</a> <a href="about.html">About</a> <a href="pricing.html">Pricing</a> <a href="contact.html">Contact</a> </nav> <div class="hamburger" onclick="toggleNav()">☰</div> </header> <main> <h1>Our <span class="accent">Pricing Plans</span></h1> <div class="pricing-grid"> <div class="plan"> <div class="plan-title">Web Application Pentest</div> <div class="plan-price">Starting from 6000 INR*</div> <ul class="plan-features"> <li>Testing for OWASP Top 10 vulnerabilities (SQLi, XSS, CSRF, IDOR, etc.)</li> <li>Manual + automated analysis (Burp Suite, Nmap, custom scripts)</li> <li>PDF report with: <ul> <li>Executive summary for management</li> <li>Technical details for developers</li> </ul> </li> </ul> </div> <div class="plan"> <div class="plan-title">Network Pentest</div> <div class="plan-price">Starting from 5000 INR*</div> <ul class="plan-features"> <li>Internal & external vulnerability scans</li> <li>Firewall, ports, and misconfiguration checks</li> <li>Manual exploitation of critical flaws</li> <li>PDF report with risk-based ranking & step-by-step fixes</li> </ul> </div> <div class="plan"> <div class="plan-title">Combined Package (Web + Network)</div> <div class="plan-price">Starting from 10000 INR* <span style="color:var(--muted-color); font-size:1rem;">(discounted bundle)</span></div> <ul class="plan-features"> <li>Full Web Application Pentest</li> <li>Full Network Pentest</li> <li>Consolidated PDF report (exec + technical sections)</li> </ul> </div> </div> <div class="scope-section"> *Final pricing depends on the scope of the assessment, including: <ul> <li>Number of domains / subdomains for web app testing</li> <li>Number of IP addresses / network devices for network testing</li> <li>Size &amp; complexity of the infrastructure</li> <li>Depth of testing required (automated only vs. deeper manual testing)</li> </ul> </div> <div class="exclusions-section"> <p><strong>📑 Authorization Required:</strong> Testing will only begin after receiving written approval from the client.</p> <p><strong>🔄 Retesting:</strong> One free retest is included per engagement. Additional retests may incur extra charges.</p> <p><strong>🛡️ Exclusions:</strong> Unless explicitly approved, testing will not include Denial-of-Service (DoS), physical security, or social engineering.</p> <p><strong>📆 Timeline:</strong> Typical testing duration is 3–7 business days, with reports delivered within 5–10 business days after testing.</p> <p><strong>🎯 Custom Engagements:</strong> Large networks, multiple applications, or specialized requirements (e.g., cloud, APIs) will receive a tailored proposal and pricing.</p> </div> <div class="cta-section" style="text-align: center;"> <a href="contact.html" class="cta-button">Get Your Free Consultation</a> </div> </main> <footer class="site-footer"> <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p> </footer> </div> <script> document.getElementById('year').textContent = new Date().getFullYear(); function toggleNav() { const nav = document.querySelector('.nav'); nav.classList.toggle('open'); } document.addEventListener('DOMContentLoaded', function () { const navLinks = document.querySelectorAll('.nav a'); const currentPage = window.location.pathname.split('/').pop(); navLinks.forEach(link => { if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) { link.classList.add('active'); } }); }); </script> </body> </html>
