@@ -8,305 +8,209 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-:root {
-  --bg-color: #0a0a0a;
-  --text-color: #e0e0e0;
-  --accent-color: #00ff7f;
-  --muted-color: #888888;
-  --border-color: #222222;
-}
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
+    body {
+      font-family: "Roboto Mono", monospace;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+    }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Roboto Mono', monospace;
-  margin: 0;
-  padding: 0;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    /* Consistent container across all pages */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem;
-}
+    header {
+      background: #111;
+      color: #fff;
+      padding: 1rem 0;
+    }
 
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
-}
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  text-decoration: none;
-  color: var(--text-color);
-  min-width: 0;
-}
+    header h1 {
+      font-size: 1.5rem;
+    }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  flex: 0 0 auto;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
 
-.company-name {
-  font-weight: 700;
-  font-size: 1.2rem;
-  overflow-wrap: anywhere;
-}
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-.nav {
-  display: flex;
-  min-width: 0;
-}
+    nav ul li a:hover {
+      color: #1abc9c;
+    }
 
-.nav a {
-  color: var(--muted-color);
-  text-decoration: none;
-  margin-left: 1.5rem;
-  transition: color 0.2s ease;
-}
+    /* Hero Section */
+    .hero {
+      background: #1abc9c;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
 
-.nav a:hover,
-.nav a.active {
-  color: var(--accent-color);
-}
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-.hamburger {
-  display: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--accent-color);
-}
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
 
-main {
-  padding: 3rem 0;
-}
+    .btn {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
 
-h1 {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
+    .btn:hover {
+      background: #333;
+    }
 
-h1 .accent {
-  color: var(--accent-color);
-}
+    /* Services Section */
+    .services {
+      background: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: var(--muted-color);
-  margin-bottom: 3rem;
-}
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #111;
+    }
 
-h2 {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-}
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
 
-.services-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  min-width: 0;
-}
+    .service {
+      background: #f0f0f0;
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
 
-.services-list li {
-  background-color: #111;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  overflow-wrap: anywhere;
-}
+    .service:hover {
+      transform: translateY(-5px);
+    }
 
-.services-list h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: var(--accent-color);
-}
+    .service h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: #1abc9c;
+    }
 
-.services-list p {
-  margin: 0;
-  color: var(--muted-color);
-}
+    /* Footer */
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
 
-.cta-section {
-  text-align: center;
-  margin-top: 4rem;
-}
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-.cta-button {
-  display: inline-block;
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 100%;
-  white-space: normal;
-}
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
 
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-}
+      .hero h2 {
+        font-size: 2rem;
+      }
 
-.site-footer {
-  text-align: center;
-  padding: 2rem 0;
-  margin-top: 2rem;
-  border-top: 1px solid var(--border-color);
-  color: var(--muted-color);
-  font-size: 0.9rem;
-}
-
-/* Mobile - SAME AS BEFORE */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  .nav {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-  .nav.open {
-    display: flex;
-  }
-  .nav a {
-    margin-left: 0;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border-color);
-  }
-  .hamburger {
-    display: block;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  .services-list {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .services-list li {
-    padding: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  .cta-button {
-    width: 100%;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-  }
-}
-
-/* Tablet - 2 columns */
-@media (min-width: 769px) and (max-width: 1199px) {
-  .services-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Desktop - 3 columns */
-@media (min-width: 1200px) {
-  .services-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  h1 {
-    font-size: 3rem;
-  }
-  .subtitle {
-    font-size: 1.3rem;
-  }
-}
+      .services h2 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="site-header">
-      <a href="index.html" class="brand">
-        <img src="idc_logo.jpg" alt="IDC Logo" class="logo" />
-        <span class="company-name">The Internet Defense Company</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="contact.html">Contact</a>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>IDC</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-      <div class="hamburger" onclick="toggleNav()">☰</div>
-    </header>
-    <main>
-      <h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
-      <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
-      <p>Welcome to IDC secure. Explore our services and learn more about how we can help secure your business.</p>
-      <h2>Services</h2>
-      <ul class="services-list">
-        <li>
-          <h3>Network Penetration Testing</h3>
-          <p>Conducting simulated attacks on your network to identify vulnerabilities and deliver comprehensive recommendations that strengthen your security posture against real-world threats.</p>
-        </li>
-        <li>
-          <h3>Web Application Security Testing</h3>
-          <p>Thoroughly assessing web applications to identify vulnerabilities like SQL injection and cross-site scripting, with actionable recommendations to protect critical business data.</p>
-        </li>
-        <li>
-          <h3>Security Awareness Session</h3>
-          <p>Empowering employees with up-to-date cybersecurity knowledge and best practices to reduce human risk, prevent phishing, and foster a strong security culture.</p>
-        </li>
-      </ul>
-      <div class="cta-section">
-        <a href="contact.html" class="cta-button">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>Helping businesses find vulnerabilities.</h2>
+      <p>We provide basic penetration testing services for businesses.</p>
+      <a href="services.html" class="btn">Services</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service">
+          <h3>Penetration Testing</h3>
+          <p>Identify security loopholes in your systems before attackers can exploit them.</p>
+        </div>
+        <div class="service">
+          <h3>Security Awareness</h3>
+          <p>Training sessions to help your staff recognize and avoid online threats.</p>
+        </div>
+        <div class="service">
+          <h3>Consulting</h3>
+          <p>Get tailored cybersecurity advice and strategies for your business.</p>
+        </div>
       </div>
-    </main>
-    <footer class="site-footer">
-      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
-    </footer>
-  </div>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function toggleNav() {
-      const nav = document.querySelector('.nav');
-      nav.classList.toggle('open');
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      const navLinks = document.querySelectorAll('.nav a');
-      const currentPage = window.location.pathname.split('/').pop();
-      navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 The Internet Defense Company. All rights reserved.</p>
+  </footer>
 </body>
 </html>
