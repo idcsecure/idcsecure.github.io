@@ -15,11 +15,10 @@
   --muted-color: #888888;
   --border-color: #222222;
 }
-/* Global guards for responsive layout */
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
-
 html, body { overflow-x: hidden; }
 
 body {
@@ -33,7 +32,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Media responsive defaults */
 img, svg, video, canvas { max-width: 100%; height: auto; }
 
 .container {
@@ -132,7 +130,7 @@ h2 {
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
   min-width: 0;
 }
 
@@ -141,7 +139,6 @@ h2 {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
-  margin-bottom: 1rem;
   overflow-wrap: anywhere;
 }
 
@@ -189,10 +186,9 @@ h2 {
   font-size: 0.9rem;
 }
 
-/* Mobile */
+/* Mobile - SAME AS BEFORE */
 @media (max-width: 768px) {
   .container {
-    max-width: 100%;
     padding: 1rem;
   }
   .site-header {
@@ -217,17 +213,16 @@ h2 {
   .hamburger {
     display: block;
   }
-  main {
-    padding: 1.5rem 0;
-  }
   h1 {
     font-size: 2rem;
   }
   .services-list {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   .services-list li {
     padding: 1.2rem;
+    margin-bottom: 1rem;
   }
   .cta-button {
     width: 100%;
@@ -236,26 +231,17 @@ h2 {
   }
 }
 
-/* Tablet */
+/* Tablet - 2 columns */
 @media (min-width: 769px) and (max-width: 1199px) {
-  .container {
-    max-width: 1200px;
-    padding: 2rem;
-  }
   .services-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop/wide */
+/* Desktop - 3 columns */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
-    padding: 3rem;
-  }
   .services-list {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
   }
   h1 {
     font-size: 3rem;
@@ -285,7 +271,6 @@ h2 {
       <h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
       <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
       <p>Welcome to IDC secure. Explore our services and learn more about how we can help secure your business.</p>
-
       <h2>Services</h2>
       <ul class="services-list">
         <li>
@@ -301,27 +286,20 @@ h2 {
           <p>Empowering employees with up-to-date cybersecurity knowledge and best practices to reduce human risk, prevent phishing, and foster a strong security culture.</p>
         </li>
       </ul>
-
       <div class="cta-section">
         <a href="contact.html" class="cta-button">Get Started</a>
       </div>
     </main>
-
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
     </footer>
   </div>
   <script>
-    // Set footer year dynamically
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toggle mobile navigation
     function toggleNav() {
       const nav = document.querySelector('.nav');
       nav.classList.toggle('open');
     }
-
-    // Highlight active navigation link
     document.addEventListener('DOMContentLoaded', function () {
       const navLinks = document.querySelectorAll('.nav a');
       const currentPage = window.location.pathname.split('/').pop();
