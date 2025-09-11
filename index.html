@@ -16,11 +16,6 @@
   --border-color: #222222;
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
-
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -44,6 +39,7 @@ body {
   align-items: center;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
+  position: relative;
 }
 
 .brand {
@@ -52,25 +48,21 @@ body {
   gap: 15px;
   text-decoration: none;
   color: var(--text-color);
-  min-width: 0;
 }
 
 .logo {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  flex: 0 0 auto;
 }
 
 .company-name {
   font-weight: 700;
   font-size: 1.2rem;
-  overflow-wrap: anywhere;
 }
 
 .nav {
   display: flex;
-  min-width: 0;
 }
 
 .nav a {
@@ -115,7 +107,7 @@ h1 .accent {
 
 h2 {
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--accent-color);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
   margin-top: 3rem;
@@ -129,15 +121,13 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  min-width: 0;
 }
 
 .services-list li {
   background-color: #111;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1.5rem;
-  overflow-wrap: anywhere;
 }
 
 .services-list h3 {
@@ -166,8 +156,6 @@ h2 {
   font-weight: 700;
   font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 100%;
-  white-space: normal;
 }
 
 .cta-button:hover {
@@ -184,11 +172,9 @@ h2 {
   font-size: 0.9rem;
 }
 
-/* Mobile - SAME AS BEFORE */
+/* Mobile styles */
 @media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
+  .container { padding: 1rem; }
   .site-header {
     flex-direction: column;
     align-items: flex-start;
@@ -200,27 +186,20 @@ h2 {
     gap: 1rem;
     width: 100%;
   }
-  .nav.open {
-    display: flex;
-  }
+  .nav.open { display: flex; }
   .nav a {
     margin-left: 0;
     padding: 0.5rem 0;
     border-bottom: 1px solid var(--border-color);
   }
-  .hamburger {
-    display: block;
-  }
-  h1 {
-    font-size: 2rem;
-  }
+  .hamburger { display: block; }
+  h1 { font-size: 2rem; }
   .services-list {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   .services-list li {
     padding: 1.2rem;
-    margin-bottom: 1rem;
   }
   .cta-button {
     width: 100%;
@@ -241,12 +220,8 @@ h2 {
   .services-list {
     grid-template-columns: repeat(3, 1fr);
   }
-  h1 {
-    font-size: 3rem;
-  }
-  .subtitle {
-    font-size: 1.3rem;
-  }
+  h1 { font-size: 3rem; }
+  .subtitle { font-size: 1.3rem; }
 }
   </style>
 </head>
@@ -263,12 +238,12 @@ h2 {
         <a href="pricing.html">Pricing</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <div class="hamburger" onclick="toggleNav()">☰</div>
+      <div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
     </header>
     <main>
       <h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
       <p class="subtitle">Penetration testing services to find and fix vulnerabilities before they're exploited.</p>
-      <p>Welcome to IDC secure. Explore our services and learn more about how we can help secure your business.</p>
+      <p>Welcome to IDC Secure. Explore our services and learn more about how we can help secure your business.</p>
       <h2>Services</h2>
       <ul class="services-list">
         <li>
@@ -293,17 +268,55 @@ h2 {
     </footer>
   </div>
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile navigation toggle
     function toggleNav() {
       const nav = document.querySelector('.nav');
+      const burger = document.querySelector('.hamburger');
       nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', nav.classList.contains('open'));
     }
+
     document.addEventListener('DOMContentLoaded', function () {
+      const nav = document.querySelector('.nav');
+      const burger = document.querySelector('.hamburger');
       const navLinks = document.querySelectorAll('.nav a');
+
+      // Highlight active link
       const currentPage = window.location.pathname.split('/').pop();
       navLinks.forEach(link => {
         if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
           link.classList.add('active');
+        }
+      });
+
+      // Close nav on link click
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Close nav on click outside
+      document.addEventListener('click', (e) => {
+        const clickedInsideNav = nav.contains(e.target);
+        const clickedBurger = burger.contains(e.target);
+        if (!clickedInsideNav && !clickedBurger && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close nav on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
         }
       });
     });
