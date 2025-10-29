@@ -203,7 +203,7 @@ font-size: 0.9rem;
 <nav class="nav">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="pricing.html">Pricing</a>
+<a href="pricing.html" class="active">Pricing</a>
 <a href="contact.html">Contact</a>
 </nav>
 <div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
@@ -211,53 +211,92 @@ font-size: 0.9rem;
 <main>
 <h1>Our <span class="accent">Pricing Plans</span></h1>
 <div class="pricing-grid">
+  
+  <!-- Starter Pack -->
   <div class="plan">
     <div class="plan-title">Starter Security Pack</div>
-    <div class="plan-price">₹5000</div>
+    <div class="plan-price">₹5,000</div>
     <ul class="plan-features">
-      <li>Simulated phishing campaign & awareness training</li>
-      <li>Dark Web Exposure Report – leaked email & password check</li>
-      <li>Password Hygiene Review – identify weak or reused passwords</li>
-      <li>Executive PDF report with prioritized action plan</li>
+      <li>Essential Vulnerability Scan</li>
+      <li>Password Hygiene Review*</li>
+      <li>Basic Security Report</li>
     </ul>
   </div>
+
+  <!-- Growth Pack -->
   <div class="plan">
     <div class="plan-title">Growth Security Pack</div>
-    <div class="plan-price">Starting from ₹12,000*</div>
+    <div class="plan-price">₹11,000</div>
     <ul class="plan-features">
-      <li>Everything in Starter Security Pack</li>
-      <li>Essential Vulnerability Scan – networks & apps</li>
-      <li>Wi-Fi & Network Security Audit – encryption & rogue device check</li>
-      <li>Comprehensive report with remediation roadmap</li>
+      <li>Everything in Starter Pack</li>
+      <li>Phishing Campaign & Awareness Training</li>
+      <li>Dark Web Exposure Report</li>
+      <li>Security Report + Campaign Reports</li>
     </ul>
   </div>
+
+  <!-- Premium Pack -->
   <div class="plan">
     <div class="plan-title">Premium Defense Pack</div>
-    <div class="plan-price">Starting from ₹20,000*</div>
+    <div class="plan-price">₹18,000</div>
     <ul class="plan-features">
-      <li>Everything in Growth Security Pack</li>
-      <li>Custom Security Policy Pack (AUP, InfoSec, Breach Plan)</li>
-      <li>Quarterly scans & phishing simulations</li>
-      <li>IDC Advisory Support – incident & compliance guidance</li>
-      <li>Best for compliance & long-term protection</li>
+      <li>Everything in Growth Pack</li>
+      <li> Custom Tailored Security Policies</li>
+      <li>Brand Protection</li>
+      <li>Executive Summary Reports</li>
     </ul>
   </div>
+
+  <!-- Wi-Fi & Network Pack -->
+  <div class="plan">
+    <div class="plan-title">Wi-Fi & Network Pack</div>
+    <div class="plan-price">₹8,000</div>
+    <ul class="plan-features">
+      <li>Wi-Fi Configuration Review</li>
+      <li>Network Device Discovery</li>
+      <li>Router & Firewall Configuration Audit</li>
+      <li>Guest Network Isolation Test</li>
+      <li>Access Control & Device Segmentation Check</li>
+      <li>Detailed Reports</li>
+    </ul>
+  </div>
+
+  <!-- Basic Pentesting Pack -->
+  <div class="plan">
+    <div class="plan-title">Basic Penetration Testing Pack</div>
+    <div class="plan-price">₹15,000</div>
+    <ul class="plan-features">
+      <li>Penetration Testing*</li>
+      <li>Includes Wi-Fi & Network Pack</li>
+      <li>Password Hygiene Review</li>
+      <li>Comprehensive Findings & Remediation Report</li>
+    </ul>
+  </div>
+
 </div>
-<div class="scope-section">
-*Final pricing depends on the scope of the assessment, including:
+
+<div class="scope-section"><strong>
+The above mentioned prices are baseline estimates. Final pricing may vary depending on factors such as:
 <ul>
-<li>Number of domains / subdomains for Web Application testing</li>
-<li>Number of IP addresses / network devices for Network testing</li>
-<li>Size &amp; complexity of the infrastructure</li>
-<li>Depth of testing required (automated only vs. deeper manual testing)</li>
+  <li>Number of domains / subdomains for web or application assessments</li>
+  <li>Number of IPs / network devices for network or Wi-Fi testing</li>
+  <li>Size and complexity of the infrastructure</li>
+  <li>Depth of testing required (automated scans vs. detailed manual assessment)</li>
+  <li>Additional custom requirements or policy support</li>
 </ul>
 </div>
-<div class="exclusions-section">
-<p><strong>📑 Authorization Required:</strong> Testing will only begin after receiving written approval from the client.</p>
-<p><strong>🛡️ Exclusions:</strong> Unless explicitly approved, testing will not include Denial-of-Service (DoS), physical security, or social engineering.</p>
-<p><strong>📆 Timeline:</strong> Typical testing duration is 3–7 business days, with reports delivered within 5–10 business days after testing.</p>
-<p><strong>🎯 Custom Engagements:</strong> Large networks, multiple applications, or specialized requirements (e.g., cloud, APIs) will receive a tailored proposal and pricing.</p>
+<div class="scope-section">
+  <p>*Penetration testing ROE and scope to be discussed later.</p>
+  <p>*Password hygiene testing may require the client to provide IDC with password hashes (NOT plaintext) exported from their authentication system, along with the hashing algorithm and any salt/metadata.</p>
 </div>
+
+<div class="exclusions-section">
+<p> Authorization Required: Testing begins only after written client approval.</p>
+<p>Exclusions: DoS attacks, physical testing, or social engineering are excluded unless approved.</p>
+<p>Timeline: Typical duration: 3–7 business days; reports within 5–10 days post-testing.</p>
+<!--<p><strong>Custom Engagements:</strong> Large networks, multiple apps, or cloud/API environments will receive tailored proposals.</p>-->
+<strong></div>
+
 <div class="cta-section" style="text-align: center;">
 <a href="contact.html" class="cta-button">Get Your Free Consultation</a>
 </div>
@@ -284,7 +323,6 @@ document.addEventListener('DOMContentLoaded', function () {
       link.classList.add('active');
     }
   });
-  // Close nav on link click
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (nav.classList.contains('open')) {
