@@ -1,298 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Internet Defense Company</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/" />
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-:root {
---bg-color: #0a0a0a;
---text-color: #e0e0e0;
---accent-color: #00ff7f;
---muted-color: #888888;
---border-color: #222222;
-}
-body {
-background-color: var(--bg-color);
-color: var(--text-color);
-font-family: 'Roboto Mono', monospace;
-margin: 0;
-padding: 0;
-line-height: 1.7;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-}
-.container 
-{ margin: 0 5%;
-  max-width: 1600px;
-  padding: 3rem 0;
-}
-.site-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding-bottom: 2rem;
-border-bottom: 1px solid var(--border-color);
-position: relative;
-}
-.brand {
-display: flex;
-align-items: center;
-gap: 15px;
-text-decoration: none;
-color: var(--text-color);
-}
-.logo {
-width: 40px;
-height: 40px;
-object-fit: contain;
-}
-.company-name {
-font-weight: 700;
-font-size: 1.2rem;
-}
-.nav {
-display: flex;
-}
-.nav a {
-color: var(--muted-color);
-text-decoration: none;
-margin-left: 1.5rem;
-transition: color 0.2s ease;
-}
-.nav a:hover,
-.nav a.active {
-color: var(--accent-color);
-}
-.hamburger {
-display: none;
-cursor: pointer;
-font-size: 1.5rem;
-color: var(--accent-color);
-}
-main {
-padding: 3rem 0;
-}
-h1 {
-font-size: 2.5rem;
-color: var(--text-color);
-margin-bottom: 0.5rem;
-line-height: 1.2;
-}
-h1 .accent {
-color: var(--accent-color);
-}
-.subtitle {
-font-size: 1.1rem;
-color: var(--muted-color);
-margin-bottom: 3rem;
-}
-h2 {
-font-size: 1.5rem;
-color: var(--accent-color);
-border-bottom: 1px solid var(--border-color);
-padding-bottom: 0.5rem;
-margin-top: 3rem;
-margin-bottom: 1.5rem;
-}
-.services-list {
-list-style: none;
-padding: 0;
-margin: 0;
-display: grid;
-grid-template-columns: 1fr;
-gap: 1.5rem;
-}
-.services-list li {
-background-color: #111;
-border: 1px solid var(--border-color);
-border-radius: 10px;
-padding: 1.5rem;
-}
-.services-list h3 {
-margin: 0 0 0.5rem 0;
-font-size: 1.2rem;
-color: var(--accent-color);
-}
-.services-list p {
-margin: 0;
-color: var(--muted-color);
-}
-.cta-section {
-text-align: center;
-margin-top: 6rem;
-}
-.cta-button {
-display: inline-block;
-background-color: var(--accent-color);
-color: var(--bg-color);
-padding: 1rem 2rem;
-border-radius: 8px;
-text-decoration: none;
-font-weight: 700;
-font-size: 1rem;
-transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.cta-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-}
-.site-footer {
-text-align: center;
-padding: 2rem 0;
-margin-top: 2rem;
-border-top: 1px solid var(--border-color);
-color: var(--muted-color);
-font-size: 0.9rem;
-}
-/* Mobile styles */
-@media (max-width: 768px) {
-.container { padding: 1rem; }
-.site-header {
-flex-direction: column;
-align-items: flex-start;
-gap: 1rem;
-}
-.nav {
-display: none;
-flex-direction: column;
-gap: 1rem;
-width: 100%;
-}
-.nav.open { display: flex; }
-.nav a {
-margin-left: 0;
-padding: 0.5rem 0;
-border-bottom: 1px solid var(--border-color);
-}
-.hamburger { display: block; }
-h1 { font-size: 2rem; }
-.services-list {
-grid-template-columns: 1fr;
-gap: 1rem;
-}
-.services-list li {
-padding: 1.2rem;
-}
-.cta-button {
-width: auto;
-margin: 0 auto;
-display: block;
-padding: 1.2rem;
-font-size: 1.1rem;
-}
-}
-/* Tablet - 2 columns */
-@media (min-width: 769px) and (max-width: 1199px) {
-.services-list {
-grid-template-columns: repeat(2, 1fr);
-}
-}
-/* Desktop - 3 columns */
-@media (min-width: 1200px) {
-.services-list {
-grid-template-columns: repeat(3, 1fr);
-}
-h1 { font-size: 3rem; }
-.subtitle { font-size: 1.3rem; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Internet Defense Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<div class="container">
-<header class="site-header">
-<a href="index.html" class="brand">
-<img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
-<span class="company-name">The Internet Defense Company</span>
-</a>
-<nav class="nav">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="pricing.html">Pricing</a>
-<a href="contact.html">Contact</a>
-</nav>
-<div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
-</header>
-<main>
-<h1>Helping businesses<br /><span class="accent">Find vulnerabilities.</span></h1>
-<p class="subtitle">Business-focused security assessments and services to protect your organization against cyber threats.</p>
-<p>Welcome to IDC Secure. Explore our services and learn more about how we can help secure your business.</p>
-<h2>Our Services</h2>
-<ul class="services-list">
-<li><h3>Essential Vulnerability Scan</h3><p>Identifies common vulnerabilities across systems, websites, and applications.</p></li>
+  <div class="container">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+    </header>
 
-<li><h3>Penetration Testing</h3><p>Simulates real-world attacks to find security weaknesses.</p></li>
+    <main>
+      <h1>Helping businesses<br><span class="accent">Find vulnerabilities.</span></h1>
+      <p class="subtitle">Business-focused security assessments and services to protect your organization against cyber threats.</p>
+      <p>Welcome to IDC Secure. Explore our services and learn more about how we can help secure your business.</p>
 
-<li><h3>Wi-Fi & Network Audits</h3><p>Reviews network configurations and wireless setups to ensure secure access and segmentation.</p></li>
+      <h2>Our Services</h2>
+      <ul class="services-list">
+        <li><h3>Essential Vulnerability Scan</h3><p>Identifies common vulnerabilities across systems, websites, and applications.</p></li>
+        <li><h3>Penetration Testing</h3><p>Simulates real-world attacks to find security weaknesses.</p></li>
+        <li><h3>Wi-Fi & Network Audits</h3><p>Reviews network configurations and wireless setups to ensure secure access and segmentation.</p></li>
+        <li><h3>Password Hygiene Review</h3><p>Analyzes password policies and identifies weak or reused credentials across your environment.</p></li>
+        <li><h3>Phishing Campaign</h3><p>Conducts simulated phishing attacks to assess employee awareness and response readiness. Comes with awareness training sessions.</p></li>
+        <li><h3>Dark Web Campaign</h3><p>Scans the dark web for compromised credentials, emails, leaks, and mentions of your organization.</p></li>
+        <li><h3>Custom Security Policies</h3><p>Develops tailored security policies that align with your business goals.</p></li>
+        <li><h3>Social Media and Brand Protection</h3><p>Monitors online presence for impersonation, data leaks, and brand misuse.</p></li>
+      </ul>
 
-<li><h3>Password Hygiene Review</h3><p>Analyzes password policies and identifies weak or reused credentials across your environment.</p></li>
+      <div class="cta-section">
+        <a href="contact.html" class="cta-button">Get Started</a>
+      </div>
+    </main>
 
-<li><h3>Phishing Campaign</h3><p>Conducts simulated phishing attacks to assess employee awareness and response readiness. Comes with awareness training sessions.</p></li>
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+    </footer>
+  </div>
 
-<li><h3>Dark Web Campaign</h3><p>Scans the dark web for compromised credentials, emails, leaks, and mentions of your organization.</p></li>
-
-<li><h3>Custom Security Policies</h3><p>Develops custom-tailored security policies that align with your business goals and compliance needs.</p></li>
-
-<li><h3>Social Media and Brand Protection</h3><p>Monitors online presence for impersonation, data leaks, and brand misuse across platforms.</p></li>
-</ul>
-<div class="cta-section">
-<a href="contact.html" class="cta-button">Get Started</a>
-</div>
-</main>
-<footer class="site-footer">
-<p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
-</footer>
-</div>
-<script>
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
-// Mobile navigation toggle
-function toggleNav() {
-const nav = document.querySelector('.nav');
-const burger = document.querySelector('.hamburger');
-nav.classList.toggle('open');
-burger.setAttribute('aria-expanded', nav.classList.contains('open'));
-}
-document.addEventListener('DOMContentLoaded', function () {
-const nav = document.querySelector('.nav');
-const burger = document.querySelector('.hamburger');
-const navLinks = document.querySelectorAll('.nav a');
-// Highlight active link
-const currentPage = window.location.pathname.split('/').pop();
-navLinks.forEach(link => {
-if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
-link.classList.add('active');
-}
-});
-// Close nav on link click
-navLinks.forEach(link => {
-link.addEventListener('click', () => {
-if (nav.classList.contains('open')) {
-nav.classList.remove('open');
-burger.setAttribute('aria-expanded', 'false');
-}
-});
-});
-// Close nav on click outside
-document.addEventListener('click', (e) => {
-const clickedInsideNav = nav.contains(e.target);
-const clickedBurger = burger.contains(e.target);
-if (!clickedInsideNav && !clickedBurger && nav.classList.contains('open')) {
-nav.classList.remove('open');
-burger.setAttribute('aria-expanded', 'false');
-}
-});
-// Close nav on Escape
-document.addEventListener('keydown', (e) => {
-if (e.key === 'Escape' && nav.classList.contains('open')) {
-nav.classList.remove('open');
-burger.setAttribute('aria-expanded', 'false');
-}
-});
-});
-</script>
+  <script src="js/script.js"></script>
 </body>
 </html>
