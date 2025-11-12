@@ -11,20 +11,36 @@
 
 </head>
 <body>
-<div class="container">
-<header class="site-header">
-<a href="index.html" class="brand">
-<img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
-<span class="company-name">The Internet Defense Company</span>
-</a>
-<nav class="nav">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="pricing.html" class="active">Pricing</a>
-<a href="contact.html">Contact</a>
-</nav>
-<div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
-</header>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close">&times;</button>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
+  <div class="container">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+
+      <!-- Title row: visible on mobile. Holds company name and hamburger together under the logo -->
+      <div class="title-row">
+        <span class="company-name">The Internet Defense Company</span>
+        <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 <main>
 <h1>Our <span class="accent">Pricing Plans</span></h1>
 <div class="pricing-grid">
@@ -122,14 +138,15 @@ The above mentioned prices are baseline estimates. Final pricing may vary depend
 <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
 </footer>
 </div>
+<script src="js/script.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-function toggleNav() {
-  const nav = document.querySelector('.nav');
-  const burger = document.querySelector('.hamburger');
-  nav.classList.toggle('open');
-  burger.setAttribute('aria-expanded', nav.classList.contains('open'));
-}
+// function toggleNav() {
+//   const nav = document.querySelector('.nav');
+//   const burger = document.querySelector('.hamburger');
+//   nav.classList.toggle('open');
+//   burger.setAttribute('aria-expanded', nav.classList.contains('open'));
+// }
 document.addEventListener('DOMContentLoaded', function () {
   const nav = document.querySelector('.nav');
   const burger = document.querySelector('.hamburger');
