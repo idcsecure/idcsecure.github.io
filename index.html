@@ -10,19 +10,35 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close">&times;</button>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
   <div class="container">
     <header class="site-header">
       <a href="index.html" class="brand">
         <img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
         <span class="company-name">The Internet Defense Company</span>
       </a>
+
+      <!-- Title row: visible on mobile. Holds company name and hamburger together under the logo -->
+      <div class="title-row">
+        <span class="company-name">The Internet Defense Company</span>
+        <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+      </div>
+
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="pricing.html">Pricing</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <div class="hamburger" onclick="toggleNav()" aria-expanded="false" aria-label="Toggle navigation">☰</div>
     </header>
 
     <main>

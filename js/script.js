@@ -4,25 +4,57 @@
   const yEl = document.getElementById('year');
   if (yEl) yEl.textContent = new Date().getFullYear();
 
-  // nav toggle (hamburger)
-  const burgerList = document.querySelectorAll('.hamburger');
-  burgerList.forEach(burger => {
-    burger.addEventListener('click', () => {
-      const nav = document.querySelector('.nav');
-      if (!nav) return;
-      nav.classList.toggle('open');
-      const expanded = nav.classList.contains('open');
-      burger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  // Sidebar toggle functionality
+  const hamburgerBtn = document.querySelector('.hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  const sidebarCloseBtn = document.getElementById('sidebar-close');
+  const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+
+  // Open sidebar
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      sidebarOverlay.classList.add('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
     });
+  }
+
+  // Close sidebar
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('open');
+    if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', closeSidebar);
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  }
+
+  // Close sidebar on link click
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', closeSidebar);
   });
 
-  // highlight active link (works across pages)
+  // Close sidebar on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      closeSidebar();
+    }
+  });
+
+  // Highlight active link (works across pages)
   document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav a');
+    const allNavLinks = document.querySelectorAll('.nav a, .sidebar-nav a');
     let currentPage = window.location.pathname.split('/').pop();
     if (!currentPage) currentPage = 'index.html';
     currentPage = currentPage.toLowerCase();
-    navLinks.forEach(link => {
+    
+    allNavLinks.forEach(link => {
       let href = link.getAttribute('href') || '';
       href = href.toLowerCase();
       // normalize
@@ -31,44 +63,6 @@
         link.classList.add('active');
       } else {
         link.classList.remove('active');
-      }
-
-      // close nav on link click (mobile)
-      link.addEventListener('click', () => {
-        const nav = document.querySelector('.nav');
-        if (nav && nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          const burgers = document.querySelectorAll('.hamburger');
-          burgers.forEach(b => b.setAttribute('aria-expanded', 'false'));
-        }
-      });
-    });
-
-    // click outside to close nav (mobile)
-    document.addEventListener('click', (e) => {
-      const nav = document.querySelector('.nav');
-      const burgers = document.querySelectorAll('.hamburger');
-      let clickedInsideNav = nav && nav.contains(e.target);
-      let clickedBurger = Array.from(burgers).some(b => b.contains(e.target));
-      if (!clickedInsideNav && !clickedBurger && nav && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        burgers.forEach(b => b.setAttribute('aria-expanded', 'false'));
-      }
-    });
-
-    // close nav on escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const nav = document.querySelector('.nav');
-        if (nav && nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          document.querySelectorAll('.hamburger').forEach(b => b.setAttribute('aria-expanded', 'false'));
-        }
-        // also close modal if open
-        const modal = document.getElementById('founder-note-modal');
-        if (modal && modal.style.display === 'block') {
-          closeModal(modal);
-        }
       }
     });
 
