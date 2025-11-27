@@ -47,19 +47,36 @@
     }
   });
 
-  // Highlight active link (works across pages)
+  // Highlight active link (works across pages with directory-based URLs)
   document.addEventListener('DOMContentLoaded', () => {
     const allNavLinks = document.querySelectorAll('.nav a, .sidebar-nav a');
-    let currentPage = window.location.pathname.split('/').pop();
-    if (!currentPage) currentPage = 'index.html';
-    currentPage = currentPage.toLowerCase();
-    
+
+    function normalizePath(path) {
+      if (!path) return '';
+      try {
+        const u = new URL(path, window.location.origin);
+        path = u.pathname;
+      } catch (e) {}
+
+      // remove leading/trailing slashes
+      path = path.replace(/^\/+|\/+$/g, '');
+
+      // strip .html
+      path = path.replace(/\.html$/i, '');
+
+      // remove trailing /index
+      path = path.replace(/\/?index$/i, '');
+
+      return path.toLowerCase();
+    }
+
+    const currentPath = normalizePath(window.location.pathname);
+
     allNavLinks.forEach(link => {
-      let href = link.getAttribute('href') || '';
-      href = href.toLowerCase();
-      // normalize
-      if (!href.endsWith('.html')) href = href + (href ? '' : 'index.html');
-      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+      const href = link.getAttribute('href') || '';
+      const linkPath = normalizePath(href);
+
+      if (linkPath === currentPath) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
@@ -74,10 +91,10 @@
     function openModal(m) {
       m.style.display = 'block';
       m.setAttribute('aria-hidden', 'false');
-      // focus trap - focus modal
       const focusEl = m.querySelector('.modal-content') || m;
       if (focusEl && typeof focusEl.focus === 'function') focusEl.focus();
     }
+
     function closeModal(m) {
       m.style.display = 'none';
       m.setAttribute('aria-hidden', 'true');
