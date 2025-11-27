@@ -47,34 +47,37 @@
     }
   });
 
-  // Highlight active link (works across pages with directory-based URLs)
+  // Highlight active link (FIXED for directory structure)
   document.addEventListener('DOMContentLoaded', () => {
-    const allNavLinks = document.querySelectorAll('.nav a, .sidebar-nav a');
+    const allNavLinks = document.querySelectorAll('.nav a, .navbar a, .sidebar-nav a');
 
     function normalizePath(path) {
       if (!path) return '';
+     
+      // Handle relative URLs by converting to absolute
       try {
         const u = new URL(path, window.location.origin);
         path = u.pathname;
-      } catch (e) {}
+      } catch (e) {
+        path = window.location.pathname + path; // relative path
+      }
 
-      // remove leading/trailing slashes
-      path = path.replace(/^\/+|\/+$/g, '');
-
-      // strip .html
-      path = path.replace(/\.html$/i, '');
-
-      // remove trailing /index
-      path = path.replace(/\/?index$/i, '');
-
+      // Handle directory structure: /services/ -> services
+      path = path.replace(/\/index\.html$/, '').replace(/\/$/, '').split('/').pop() || 'index';
+     
+      // Handle root: / -> index
+      if (path === '') path = 'index';
+     
       return path.toLowerCase();
     }
 
     const currentPath = normalizePath(window.location.pathname);
+    console.log('Current path:', currentPath); // Debug
 
     allNavLinks.forEach(link => {
       const href = link.getAttribute('href') || '';
       const linkPath = normalizePath(href);
+      console.log('Link path:', linkPath, href); // Debug
 
       if (linkPath === currentPath) {
         link.classList.add('active');
