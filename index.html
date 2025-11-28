@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Internet Defense Company | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close">&times;</button>
+    <nav class="sidebar-nav">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/packages/">Pricing</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </aside>
+  <div class="container">
+    <header class="site-header">
+      <a href="/" class="brand">
+        <img src="/idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+
+      <!-- Title row: visible on mobile. Holds company name and hamburger together under the logo -->
+      <div class="title-row">
+        <span class="company-name">The Internet Defense Company</span>
+        <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+      </div>
+
+      <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/packages/">Pricing</a>
+      <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Helping businesses<br><span class="accent">Find vulnerabilities.</span></h1>
+      <p class="subtitle">Business-focused security assessments and services to protect your organization against cyber threats.</p>
+      <p>Welcome to IDC Secure. Explore our services and learn more about how we can help secure your business.</p>
+
+      <h2>Our Services</h2>
+      <ul class="services-list">
+        <li><h3>Essential Vulnerability Scan</h3><p>Identifies common vulnerabilities across systems, websites, and applications.</p></li>
+        <li><h3>Penetration Testing</h3><p>Simulates real-world attacks to find security weaknesses.</p></li>
+        <li><h3>Wi-Fi & Network Audits</h3><p>Reviews network configurations and wireless setups to ensure secure access and segmentation.</p></li>
+        <li><h3>Password Hygiene Review</h3><p>Analyzes password policies and identifies weak or reused credentials across your environment.</p></li>
+        <li><h3>Phishing Campaign</h3><p>Conducts simulated phishing attacks to assess employee awareness and response readiness. Comes with awareness training sessions.</p></li>
+        <li><h3>Dark Web Campaign</h3><p>Scans the dark web for compromised credentials, emails, leaks, and mentions of your organization.</p></li>
+        <li><h3>Custom Security Policies</h3><p>Develops tailored security policies that align with your business goals.</p></li>
+        <li><h3>Social Media and Brand Protection</h3><p>Monitors online presence for impersonation, data leaks, and brand misuse.</p></li>
+      </ul>
+
+      <div class="cta-section">
+        <a href="/contact/" class="cta-button">Get Started</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

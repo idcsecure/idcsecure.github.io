@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pricing - IDC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close">&times;</button>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
+  <div class="container">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
+        <span class="company-name">The Internet Defense Company</span>
+      </a>
+
+      <!-- Title row: visible on mobile. Holds company name and hamburger together under the logo -->
+      <div class="title-row">
+        <span class="company-name">The Internet Defense Company</span>
+        <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation">☰</div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+<main>
+<h1>Our <span class="accent">Pricing Plans</span></h1>
+<div class="pricing-grid">
+  
+  <!-- Starter Pack -->
+  <div class="plan">
+    <div class="plan-title">Starter Security Pack</div>
+    <div class="plan-price">₹5,000</div>
+    <ul class="plan-features">
+      <li>Essential Vulnerability Scan</li>
+      <li>Password Hygiene Review*</li>
+      <li>Basic Security Report</li>
+    </ul>
+  </div>
+
+  <!-- Growth Pack -->
+  <div class="plan">
+    <div class="plan-title">Growth Security Pack</div>
+    <div class="plan-price">₹11,000</div>
+    <ul class="plan-features">
+      <li>Everything in Starter Pack</li>
+      <li>Phishing Campaign & Awareness Training</li>
+      <li>Dark Web Exposure Report</li>
+      <li>Security Report + Campaign Reports</li>
+    </ul>
+  </div>
+
+  <!-- Premium Pack -->
+  <div class="plan">
+    <div class="plan-title">Premium Defense Pack</div>
+    <div class="plan-price">₹18,000</div>
+    <ul class="plan-features">
+      <li>Everything in Growth Pack</li>
+      <li> Custom Tailored Security Policies</li>
+      <li>Brand Protection</li>
+      <li>Executive Summary Reports</li>
+    </ul>
+  </div>
+
+  <!-- Wi-Fi & Network Pack -->
+  <div class="plan">
+    <div class="plan-title">Wi-Fi & Network Pack*</div>
+    <div class="plan-price">₹8,000</div>
+    <ul class="plan-features">
+      <li>Wi-Fi Configuration Review</li>
+      <li>Network Device Discovery</li>
+      <li>Router & Firewall Configuration Audit</li>
+      <li>Guest Network Isolation Test</li>
+      <li>Access Control & Device Segmentation Check</li>
+      <li>Detailed Reports</li>
+    </ul>
+  </div>
+
+  <div class="plan">
+    <div class="plan-title">Basic Penetration Testing Pack</div>
+    <div class="plan-price">₹15,000</div>
+    <ul class="plan-features">
+      <li>Penetration Testing*</li>
+      <li>Includes Wi-Fi & Network Pack</li>
+      <li>Password Hygiene Review</li>
+      <li>Comprehensive Findings & Remediation Report</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="scope-section"><strong>
+The above mentioned prices are baseline estimates. Final pricing may vary depending on factors such as:
+<ul>
+  <li>Number of domains / subdomains for web or application assessments</li>
+  <li>Number of IPs / network devices for network or Wi-Fi testing</li>
+  <li>Size and complexity of the infrastructure</li>
+  <li>Depth of testing required (automated scans vs. detailed manual assessment)</li>
+  <li>Additional custom requirements or policy support</li>
+</ul>
+</div>
+<div class="scope-section">
+  <p>*Penetration testing ROE and scope to be discussed later.</p>
+  <p>*Password hygiene testing may require the client to provide IDC with password hashes (NOT plaintext) exported from their authentication system, along with the hashing algorithm and any salt/metadata.</p>
+  <p>*Wi-Fi and Network audits are conducted remotely, except for clients located within our service region.
+</div>
+
+<div class="exclusions-section">
+<p> Authorization Required: Testing begins only after written client approval.</p>
+<p>Exclusions: DoS attacks, physical testing, or social engineering are excluded unless approved.</p>
+<p>Timeline: Typical duration: 3–7 business days; reports within 5–10 days post-testing.</p>
+<!--<p><strong>Custom Engagements:</strong> Large networks, multiple apps, or cloud/API environments will receive tailored proposals.</p>-->
+<strong></div>
+
+<div class="cta-section" style="text-align: center;">
+<a href="contact.html" class="cta-button">Get Your Free Consultation</a>
+</div>
+</main>
+<footer class="site-footer">
+<p>&copy; <span id="year"></span> The Internet Defense Company. All rights reserved.</p>
+</footer>
+</div>
+<script src="js/script.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+// function toggleNav() {
+//   const nav = document.querySelector('.nav');
+//   const burger = document.querySelector('.hamburger');
+//   nav.classList.toggle('open');
+//   burger.setAttribute('aria-expanded', nav.classList.contains('open'));
+// }
+document.addEventListener('DOMContentLoaded', function () {
+  const nav = document.querySelector('.nav');
+  const burger = document.querySelector('.hamburger');
+  const navLinks = document.querySelectorAll('.nav a');
+  const currentPage = window.location.pathname.split('/').pop();
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
+      link.classList.add('active');
+    }
+  });
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+</script>
+</body>
+</html>
