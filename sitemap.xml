@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated for idcsecure.com — repo: idcsecure/idcsecure.github.io -->
+<!-- Updated sitemap for idcsecure.com -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Home (root) -->
+  <!-- Homepage -->
   <url>
-    <loc>https://idcsecure.com/</loc>
+    <loc>https://idcsecure.com/home</loc>
     <lastmod>2025-11-29</lastmod>
     <priority>1.00</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- Explicit home page file (safe to include if served) -->
-  <url>
-    <loc>https://idcsecure.com/home.html</loc>
-    <lastmod>2025-11-29</lastmod>
-    <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
 
@@ -26,7 +18,7 @@
     <changefreq>yearly</changefreq>
   </url>
 
-  <!-- Services / Packages -->
+  <!-- Packages -->
   <url>
     <loc>https://idcsecure.com/packages.html</loc>
     <lastmod>2025-11-29</lastmod>
@@ -41,15 +33,5 @@
     <priority>0.60</priority>
     <changefreq>yearly</changefreq>
   </url>
-
-  <!-- Optional: privacy / legal (add if you have these pages) -->
-  <!--
-  <url>
-    <loc>https://idcsecure.com/privacy.html</loc>
-    <lastmod>2025-11-29</lastmod>
-    <priority>0.30</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  -->
 
 </urlset>
