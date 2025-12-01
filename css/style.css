@@ -249,3 +249,69 @@ h1 .accent{color:var(--accent-color)}
   h1{font-size:3rem}
   .subtitle{font-size:1.3rem}
 }
+
+
+
+
+
+
+
+
+
+
+/* Download icon link */
+.ds-download-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:3.2rem;
+  height:3.2rem;
+  margin-top:1.5rem;
+  color:var(--accent-color);
+  text-decoration:none;
+  /* subtle base glow */
+  filter:drop-shadow(0 0 8px rgba(0,255,127,0.35));
+  transition:
+    transform 0.18s ease-out,
+    filter 0.18s ease-out;
+}
+
+.ds-download-icon .ds-icon{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* arrow base state */
+.ds-download-icon .ds-arrow{
+  transform-origin:50% 0%;
+  transition:transform 0.18s ease-out;
+}
+
+/* hover / focus animation */
+.ds-download-icon:hover,
+.ds-download-icon:focus-visible{
+  transform:translateY(-2px) scale(1.05);
+  filter:
+    drop-shadow(0 0 10px rgba(0,255,127,0.6))
+    drop-shadow(0 0 22px rgba(0,255,127,0.25));
+}
+
+/* “drop” effect on arrow */
+.ds-download-icon:hover .ds-arrow,
+.ds-download-icon:focus-visible .ds-arrow{
+  transform:translate(0,2px);
+}
+
+/* keyboard accessibility */
+.ds-download-icon:focus-visible{
+  outline:2px solid var(--accent-color);
+  outline-offset:4px;
+}
+
+/* optional: make it sit nicely on mobile */
+@media (max-width:768px){
+  .ds-download-icon{
+    margin-top:1.2rem;
+  }
+}
