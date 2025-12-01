@@ -6,13 +6,13 @@
 
   <title>Security Packages that businesses value | IDC Secure</title>
   <meta name="description" content="Explore IDC Secure's services: penetration testing, vulnerability scanning, phishing simulations, Wi-Fi & network audits, and tailored security packages for businesses." />
-  <link rel="canonical" href="https://idcsecure.com/packages.html" />
+  <link rel="canonical" href="https://idcsecure.com/packages" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Penetration testing and security services | IDC Secure" />
   <meta property="og:description" content="Penetration testing, vulnerability scanning, phishing simulations, and network audits — practical security packages for businesses." />
-  <meta property="og:url" content="https://idcsecure.com/packages.html" />
+  <meta property="og:url" content="https://idcsecure.com/packages" />
   <meta property="og:image" content="https://idcsecure.com/idc_logo.png" />
 
   <!-- Twitter -->
@@ -62,7 +62,7 @@
   </aside>
   <div class="container">
     <header class="site-header">
-      <a href="index.html" class="brand">
+      <a href="home" class="brand">
         <img src="idc_logo.png" alt="IDC Logo" class="logo" style="width: 80px; height: 80px;">
         <span class="company-name">The Internet Defense Company</span>
       </a>
@@ -170,7 +170,7 @@ The above mentioned prices are baseline estimates. Final pricing may vary depend
 <strong></div>
 
 <div class="cta-section" style="text-align: center;">
-<a href="contact.html" class="cta-button">Get Your Free Consultation</a>
+<a href="/contact" class="cta-button">Get Your Free Consultation</a>
 </div>
 </main>
 <footer class="site-footer">
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav a');
   const currentPage = window.location.pathname.split('/').pop();
   navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === 'index.html' && currentPage === '')) {
+    if (link.getAttribute('href') === currentPage || (link.getAttribute('href') === '/home' && currentPage === '')) {
       link.classList.add('active');
     }
   });
@@ -221,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
