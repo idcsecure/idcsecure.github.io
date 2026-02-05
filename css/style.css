@@ -26,11 +26,6 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
-main ul li{
-  padding-left:1rem;
-  border-left:3px solid var(--accent-color);
-  margin-bottom:1rem;
-}
 
 /* Container: percentage margins for flexible sides + reasonable max-width */
 .container{
