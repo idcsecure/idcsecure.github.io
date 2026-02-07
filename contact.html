@@ -94,7 +94,20 @@
   <h2>Get in Touch</h2>
 
 <form class="contact-form" method="post" action="https://formspree.io/f/xkovnrog">
+  <div id="form-success" style="display:none;">
+  <h3>Message sent.</h3>
+  <p>
+    Thanks for reaching out — our team will respond within one business day.
+  </p>
+</div>
 
+<div id="form-error" style="display:none;">
+  <h3>Something went wrong.</h3>
+  <p>
+    Please try again or email us directly at
+    <a href="mailto:business@idcsecure.com">business@idcsecure.com</a>.
+  </p>
+</div>
   <label>
     Full Name
     <input type="text" name="name" required>
@@ -239,9 +252,44 @@
       });
     });
   </script>
+  <script>
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const successBox = document.getElementById("form-success");
+  const errorBox = document.getElementById("form-error");
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      form.style.display = "none";
+      successBox.style.display = "block";
+    } else {
+      errorBox.style.display = "block";
+    }
+
+  } catch (err) {
+    errorBox.style.display = "block";
+  }
+});
+</script>
+
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"2698c63a2edb45bc8ccfcc6e810aeefe","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
+
 
 
 
