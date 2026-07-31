@@ -21,35 +21,6 @@
         --border: rgba(255, 255, 255, 0.1);
       }
 
-      @keyframes float-1 {
-        0%, 100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(20px, -15px) rotate(3deg);
-        }
-        50% {
-          transform: translate(0, -30px) rotate(0deg);
-        }
-        75% {
-          transform: translate(-20px, -15px) rotate(-3deg);
-        }
-      }
-
-      @keyframes float-2 {
-        0%, 100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-25px, 20px) rotate(-2deg);
-        }
-        50% {
-          transform: translate(0, 35px) rotate(0deg);
-        }
-        75% {
-          transform: translate(25px, 20px) rotate(2deg);
-        }
-      }
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
@@ -139,37 +110,6 @@
         background: rgba(255, 255, 255, 0.18);
       }
 
-      body::before {
-        content: '';
-        position: fixed;
-        top: 10%;
-        right: 5%;
-        width: 350px;
-        height: 350px;
-        opacity: 0.08;
-        z-index: 0;
-        pointer-events: none;
-        background-image: url('power_button.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        animation: float-1 6s ease-in-out infinite;
-      }
-
-      body::after {
-        content: '';
-        position: fixed;
-        bottom: 15%;
-        left: 8%;
-        width: 420px;
-        height: 420px;
-        opacity: 0.06;
-        z-index: 0;
-        pointer-events: none;
-        background-image: url('power_button.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        animation: float-2 8s ease-in-out infinite;
-      }
 
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; display: block; }
@@ -458,33 +398,33 @@
 
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="footer-grid">
           <div>
-            <h3 style="margin: 0 0 1rem 0; font-size: 1rem;">Contact Us</h3>
-            <p style="margin: 0.5rem 0; color: var(--muted);">
+            <h3>Contact Us</h3>
+            <p>
               <strong>Lamtron India Pvt Ltd</strong><br>
               Court view Arcade<br>
               Court road, Calicut, Kerala, India
             </p>
-            <p style="margin: 0.75rem 0 0.5rem 0;">
-              <strong>Ph:</strong> <a href="tel:9744803804" style="color: var(--accent);">9744803804</a>
+            <p>
+              <strong>Ph:</strong> <a href="tel:9744803804">9744803804</a>
             </p>
-            <p style="margin: 0;">
-              <strong>Email:</strong> <a href="mailto:lamtronindia@gmail.com" style="color: var(--accent);">lamtronindia@gmail.com</a>
+            <p>
+              <strong>Email:</strong> <a href="mailto:lamtronindia@gmail.com">lamtronindia@gmail.com</a>
             </p>
           </div>
-          <div style="text-align: right;">
-            <h3 style="margin: 0 0 1rem 0; font-size: 1rem;">Quick Links</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted);">
-              <li style="margin-bottom: 0.5rem;"><a href="products.html" style="color: inherit; transition: color 0.2s;">Our Products</a></li>
-              <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: inherit; transition: color 0.2s;">About Us</a></li>
-              <li><a href="contact.html" style="color: inherit; transition: color 0.2s;">Contact</a></li>
+          <div class="footer-right">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="products.html">Our Products</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
         </div>
-        <p style="margin: 0; text-align: center;">© <span id="year"></span> Lamtron. All rights reserved.</p>
+        <p class="footer-copy">© <span id="year"></span> Lamtron. All rights reserved.</p>
       </div>
     </footer>
 

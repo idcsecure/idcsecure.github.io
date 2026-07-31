@@ -154,6 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
   setActivePage();
 
   // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+  const scrollToHash = (hash) => {
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (target) {
+      // Small delay to ensure DOM is fully rendered
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  };
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       const targetId = anchor.getAttribute('href');
@@ -165,4 +176,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Scroll to hash on page load (handles cross-page links like products.html#home-appliances)
+  if (window.location.hash) {
+    scrollToHash(window.location.hash);
+  }
+
+  // Re-check after a short delay for elements that render after DOMContentLoaded
+  setTimeout(() => {
+    if (window.location.hash) {
+      scrollToHash(window.location.hash);
+    }
+  }, 300);
 });
