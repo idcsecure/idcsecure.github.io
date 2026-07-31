@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lamtron | Modern Client Website</title>
+    <meta
+      name="description"
+      content="A sleek starter website template for your client, ready to be customized with their content."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --bg: #07111f;
+        --surface: #0f1d32;
+        --surface-2: #13263f;
+        --text: #f5f7fb;
+        --muted: #9db0c9;
+        --accent: #5eead4;
+        --accent-2: #8b5cf6;
+        --border: rgba(255, 255, 255, 0.1);
+      }
 
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+        background: #000;
+        background-image: 
+          radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 25%),
+          radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.04) 0%, transparent 30%),
+          radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.03) 0%, transparent 35%);
+        color: var(--text);
+        line-height: 1.6;
+        position: relative;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero {
+        position: relative;
+        min-height: 95vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: url('family.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.62));
+        z-index: 1;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 2;
+        padding: 3rem 2rem;
+        padding-left: clamp(1rem, 6vw, 6rem);
+      }
+
+      .hero-panel {
+        max-width: 640px;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        animation: fadeUp 0.7s ease-out both;
+      }
+
+      .hero-panel-content {
+        position: relative;
+        z-index: 2;
+        color: var(--text);
+        padding: 2.5rem 0;
+        max-width: 640px;
+      }
+
+      .hero-panel-content h1,
+      .hero-panel-content p,
+      .hero-panel-content .eyebrow,
+      .hero-panel-content .hero-actions {
+        color: var(--text);
+      }
+
+      .hero-panel-content .hero-actions {
+        margin-top: 1.75rem;
+      }
+
+      .hero-panel .btn-secondary {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        padding: 0;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.45rem 0.75rem;
+        border: 1px solid rgba(94, 234, 212, 0.25);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        line-height: 1.1;
+        margin: 0 0 1rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.9rem 1.2rem;
+        border-radius: 999px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover { transform: translateY(-2px); }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #04111c;
+      }
+      .btn-secondary {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.4rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-card {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .stat {
+        padding: 1rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--border);
+      }
+
+      .stat strong { display: block; font-size: 1.1rem; }
+      .stat span { color: var(--muted); font-size: 0.9rem; }
+
+      section { padding: 2rem 0 3rem; }
+      h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 0 0 0.75rem; }
+      .section-intro { color: var(--muted); margin-bottom: 1.5rem; max-width: 760px; }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .service-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+      }
+
+      .service-card h3, .testimonial-card h3 { margin-top: 0; }
+      .service-card p, .testimonial-card p, .about-card p { color: var(--muted); }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .about-card {
+        padding: 1.4rem;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--border);
+      }
+
+      .contact-card {
+        display: grid;
+        gap: 1rem;
+        padding: 1.4rem;
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(94,234,212,0.12), rgba(139,92,246,0.16));
+        border: 1px solid var(--border);
+      }
+
+      form {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 0.85rem 0.95rem;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(7, 17, 31, 0.85);
+        color: var(--text);
+      }
+
+      textarea { min-height: 110px; resize: vertical; }
+
+      footer {
+        padding: 2rem 0 3rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      @media (max-width: 860px) {
+        .hero-grid, .about, .grid-3 { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 560px) {
+        .hero { padding-top: 3.5rem; }
+        .stat-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav-wrapper">
+      <div class="nav-container">
+        <div class="nav">
+          <a class="brand" href="index.html" aria-label="Lamtron home">
+            <img class="brand-logo" src="Logo.png" alt="Lamtron logo" />
+          </a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="index.html" class="nav-link" data-page="home">Home</a>
+            <a href="about.html" class="nav-link" data-page="about">About</a>
+            <div class="nav-dropdown">
+              <button class="dropdown-toggle" aria-expanded="false" data-page="products">Products</button>
+              <div class="dropdown-menu" role="menu">
+                <a href="products.html#home-appliances">Home Appliances</a>
+                <a href="products.html#kitchen-appliances">Kitchen Appliances</a>
+                <a href="products.html#electronics">Electronics</a>
+                <a href="products.html#electric-items">Electric Items</a>
+                <a href="products.html#personal-care">Personal Care</a>
+                <a href="products.html#lighting-devices">Lighting Devices</a>
+              </div>
+            </div>
+            <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+          </nav>
+          <a href="contact.html" class="nav-cta">Get in Touch</a>
+          <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-overlay"></div>
+      <div class="mobile-menu">
+        <a href="index.html" class="nav-link" data-page="home">Home</a>
+        <a href="about.html" class="nav-link" data-page="about">About</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-expanded="false" data-page="products">Products</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="products.html#home-appliances">Home Appliances</a>
+            <a href="products.html#kitchen-appliances">Kitchen Appliances</a>
+            <a href="products.html#electronics">Electronics</a>
+            <a href="products.html#electric-items">Electric Items</a>
+            <a href="products.html#personal-care">Personal Care</a>
+            <a href="products.html#lighting-devices">Lighting Devices</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-panel" role="img" aria-label="Lamtron product showcase background image">
+            <div class="hero-panel-content">
+              <h1>Welcome to Lamtron India Pvt Ltd</h1>
+              <p>
+                Smart solutions for modern living. Discover wide ranges of home appliances, kitchen appliances,
+                electronics, home care items, and lighting devices crafted for excellence.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="contact.html">Contact Us</a>
+                <a class="btn btn-secondary" href="#services">Explore Products</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <h2>Our Products</h2>
+          <p class="section-intro">
+            Discover our carefully curated selection of premium quality products designed for excellence.
+          </p>
+          <div class="grid-3">
+            <article class="card service-card">
+              <img src="product-1.jpg" alt="Induction Cooktop" />
+              <h3>Induction Cooktop</h3>
+              <p>Modern, energy-efficient cooking technology with precise temperature control for faster cooking and safety.</p>
+            </article>
+            <article class="card service-card">
+              <img src="product-2.jpg" alt="Pressure Cooker" />
+              <h3>Pressure Cooker</h3>
+              <p>Fast and reliable pressure cooking for Indian households. Durable construction with safety features and uniform heating.</p>
+            </article>
+            <article class="card service-card">
+              <img src="product-3.jpg" alt="Gas Stove" />
+              <h3>Gas Stove (Steel 4-Burner)</h3>
+              <p>Heavy-duty steel construction with 4 burners for versatile cooking. Efficient heat distribution and premium build quality.</p>
+            </article>
+            <article class="card service-card">
+              <img src="product-4.jpg" alt="Multi Cooker" />
+              <h3>Multi Cooker</h3>
+              <p>Versatile all-in-one cooking device for multiple functions. Perfect for rice, stew, and various Indian recipes.</p>
+            </article>
+         
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>Contact Us</h3>
+            <p>
+              <strong>Lamtron India Pvt Ltd</strong><br>
+              Court view Arcade<br>
+              Court road, Calicut, Kerala, India
+            </p>
+            <p>
+              <strong>Ph:</strong> <a href="tel:9744803804">9744803804</a>
+            </p>
+            <p>
+              <strong>Email:</strong> <a href="mailto:lamtronindia@gmail.com">lamtronindia@gmail.com</a>
+            </p>
+          </div>
+          <div class="footer-right">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="products.html">Our Products</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Lamtron. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
