@@ -8,6 +8,7 @@
       name="description"
       content="A sleek starter website template for your client, ready to be customized with their content."
     />
+    <link rel="stylesheet" href="styles.css" />
     <style>
       :root {
         --bg: #07111f;
@@ -50,30 +51,12 @@
         }
       }
 
-      @keyframes slideshow {
-        0% { transform: translateX(0); }
-        12.5% { transform: translateX(0); }
-        14% { transform: translateX(-100%); }
-        26.5% { transform: translateX(-100%); }
-        28% { transform: translateX(-200%); }
-        40.5% { transform: translateX(-200%); }
-        42% { transform: translateX(-300%); }
-        54.5% { transform: translateX(-300%); }
-        56% { transform: translateX(-400%); }
-        68.5% { transform: translateX(-400%); }
-        70% { transform: translateX(-500%); }
-        82.5% { transform: translateX(-500%); }
-        84% { transform: translateX(-600%); }
-        96.5% { transform: translateX(-600%); }
-        98% { transform: translateX(-700%); }
-      }
-
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-        background: #1a1a1a;
+        background: #000;
         background-image: 
           radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 25%),
           radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.04) 0%, transparent 30%),
@@ -81,6 +64,79 @@
         color: var(--text);
         line-height: 1.6;
         position: relative;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero {
+        position: relative;
+        min-height: 95vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: url('family.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.62));
+        z-index: 1;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 2;
+        padding: 3rem 2rem;
+        padding-left: clamp(1rem, 6vw, 6rem);
+      }
+
+      .hero-panel {
+        max-width: 640px;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        animation: fadeUp 0.7s ease-out both;
+      }
+
+      .hero-panel-content {
+        position: relative;
+        z-index: 2;
+        color: var(--text);
+        padding: 2.5rem 0;
+        max-width: 640px;
+      }
+
+      .hero-panel-content h1,
+      .hero-panel-content p,
+      .hero-panel-content .eyebrow,
+      .hero-panel-content .hero-actions {
+        color: var(--text);
+      }
+
+      .hero-panel-content .hero-actions {
+        margin-top: 1.75rem;
+      }
+
+      .hero-panel .btn-secondary {
+        background: rgba(255, 255, 255, 0.18);
       }
 
       body::before {
@@ -128,47 +184,8 @@
         z-index: 1;
       }
 
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 11;
-        background: #000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 72px;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        min-width: 180px;
-        min-height: 56px;
-      }
-
-      .brand-logo {
-        max-width: 180px;
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 1.25rem;
-        color: rgba(255, 255, 255, 0.75);
-      }
-
-      .nav-links a:hover { color: var(--text); }
-
       .hero {
-        padding: 5.5rem 0 4rem;
+        padding: 0;
       }
 
       .hero-grid {
@@ -329,7 +346,6 @@
 
       @media (max-width: 860px) {
         .hero-grid, .about, .grid-3 { grid-template-columns: 1fr; }
-        .nav-links { display: none; }
       }
 
       @media (max-width: 560px) {
@@ -339,89 +355,71 @@
     </style>
   </head>
   <body>
-    <header>
-      <div class="container nav">
-        <a class="brand" href="#home" aria-label="Lamtron home">
-          <img class="brand-logo" src="Logo.png" alt="Lamtron logo" />
-        </a>
-        <nav class="nav-links">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    <header class="nav-wrapper">
+      <div class="nav-container">
+        <div class="nav">
+          <a class="brand" href="index.html" aria-label="Lamtron home">
+            <img class="brand-logo" src="Logo.png" alt="Lamtron logo" />
+          </a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="index.html" class="nav-link" data-page="home">Home</a>
+            <a href="about.html" class="nav-link" data-page="about">About</a>
+            <div class="nav-dropdown">
+              <button class="dropdown-toggle" aria-expanded="false" data-page="products">Products</button>
+              <div class="dropdown-menu" role="menu">
+                <a href="products.html#home-appliances">Home Appliances</a>
+                <a href="products.html#kitchen-appliances">Kitchen Appliances</a>
+                <a href="products.html#electronics">Electronics</a>
+                <a href="products.html#electric-items">Electric Items</a>
+                <a href="products.html#personal-care">Personal Care</a>
+                <a href="products.html#lighting-devices">Lighting Devices</a>
+              </div>
+            </div>
+            <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+          </nav>
+          <a href="contact.html" class="nav-cta">Get in Touch</a>
+          <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-overlay"></div>
+      <div class="mobile-menu">
+        <a href="index.html" class="nav-link" data-page="home">Home</a>
+        <a href="about.html" class="nav-link" data-page="about">About</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-expanded="false" data-page="products">Products</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="products.html#home-appliances">Home Appliances</a>
+            <a href="products.html#kitchen-appliances">Kitchen Appliances</a>
+            <a href="products.html#electronics">Electronics</a>
+            <a href="products.html#electric-items">Electric Items</a>
+            <a href="products.html#personal-care">Personal Care</a>
+            <a href="products.html#lighting-devices">Lighting Devices</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
       </div>
     </header>
 
     <main id="home">
       <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <span class="eyebrow">Premium Kitchen Appliances & Cookware</span>
-            <h1>Transform Your Kitchen with Lamtron's Trusted Appliances</h1>
-            <p>
-              From induction cooktops and pressure cookers to gas stoves and multi-cookers, Lamtron brings 
-              quality, durability, and innovation to every Indian kitchen. Discover our complete range of 
-              premium cooking appliances and cookware designed for modern living.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Contact Us</a>
-              <a class="btn btn-secondary" href="#services">Explore Products</a>
-            </div>
-          </div>
-          <div style="position: relative; overflow: hidden; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); height: 450px;">
-            <div style="display: flex; animation: slideshow 32s infinite; height: 100%;">
-              <img src="product-1.jpg" alt="Induction Cooktop" style="width: 100%; height: 100%; object-fit: cover; flex-shrink: 0;" />
-              <img src="product-2.jpg" alt="Pressure Cooker" style="width: 100%; height: 100%; object-fit: cover; flex-shrink: 0;" />
-              <img src="product-3.jpg" alt="Gas Stove" style="width: 100%; height: 100%; object-fit: cover; flex-shrink: 0;" />
-              <img src="product-4.jpg" alt="Multi Cooker" style="width: 100%; height: 100%; object-fit: cover; flex-shrink: 0;" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
         <div class="container">
-          <h2>About Lamtron India Pvt Ltd</h2>
-          <p>
-            Lamtron India Pvt Ltd is a dynamic Indian-UK collaboration company specializing in Electronics, Kitchen Appliances, and Home Appliances that are specially designed for excellence.
-          </p>
-          <p>
-            At Lamtron, we believe your home deserves products that combine innovation, durability, and elegant design. Every Lamtron appliance is crafted with precision engineering and rigorous quality checks to deliver performance you can rely on, day after day.
-          </p>
-          <p>
-            From modern kitchen essentials to energy-efficient home electronics, our mission is to make everyday living smarter, easier, and more comfortable for Indian households.
-          </p>
-          <p>
-            With a focus on "Crafted for Excellence", we partner with leading manufacturers and uphold the highest standards in quality, safety, and after-sales service.
-          </p>
-          <p style="font-weight: 500; font-size: 1.05rem; color: var(--accent);">
-            Lamtron - Empowering Homes. Enhancing Lifestyles.
-          </p>
-          
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
-            <div style="text-align: center; padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
-              <p style="margin: 0; font-weight: 600; color: var(--accent); font-size: 1.1rem;">30+ Years</p>
-              <p style="margin: 0.5rem 0 0 0; color: var(--muted); font-size: 0.9rem;">Experience in the same field</p>
+          <div class="hero-panel" role="img" aria-label="Lamtron product showcase background image">
+            <div class="hero-panel-content">
+              <h1>Welcome to Lamtron India Pvt Ltd</h1>
+              <p>
+                Smart solutions for modern living. Discover wide ranges of home appliances, kitchen appliances,
+                electronics, home care items, and lighting devices crafted for excellence.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="contact.html">Contact Us</a>
+                <a class="btn btn-secondary" href="#services">Explore Products</a>
+              </div>
             </div>
-            <div style="text-align: center; padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
-              <p style="margin: 0; font-weight: 600; color: var(--accent); font-size: 1.1rem;">Dedicated Team</p>
-              <p style="margin: 0.5rem 0 0 0; color: var(--muted); font-size: 0.9rem;">Experienced Employees</p>
-            </div>
-            <div style="text-align: center; padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
-              <p style="margin: 0; font-weight: 600; color: var(--accent); font-size: 1.1rem;">Service Excellence</p>
-              <p style="margin: 0.5rem 0 0 0; color: var(--muted); font-size: 0.9rem;">Well-equipped service centers</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <div style="text-align: center; padding: 2rem 1rem;">
-            <h3 style="font-size: 1.1rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 1.5rem 0; font-weight: 600;">Our Mission</h3>
-            <p style="font-size: 1.4rem; line-height: 1.7; max-width: 800px; margin: 0 auto; color: var(--text); font-weight: 500;">
-              To craft appliances that make every Indian home smarter, safer, and more efficient — without compromising on excellence.
-            </p>
           </div>
         </div>
       </section>
@@ -458,39 +456,6 @@
         </div>
       </section>
 
-      <section id="about">
-        <div class="container">
-          <h2>Why Choose Lamtron?</h2>
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2rem; margin-bottom: 3.5rem;">
-            <div style="padding-left: 1.5rem; border-left: 3px solid var(--accent);">
-              <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: var(--text);">Crafted for Excellence</h3>
-              <p style="margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Premium build & strict QC</p>
-            </div>
-            <div style="padding-left: 1.5rem; border-left: 3px solid var(--accent-2);">
-              <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: var(--text);">Pan-India Service Network</h3>
-              <p style="margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Reliable after-sales support</p>
-            </div>
-            <div style="padding-left: 1.5rem; border-left: 3px solid var(--accent);">
-              <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: var(--text);">Energy Efficient</h3>
-              <p style="margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Designed to save power and money</p>
-            </div>
-          </div>
-          
-          <h2>Our Vision & Goal</h2>
-          <div style="max-width: 9000px; margin: 2rem auto;">
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text);">
-              Lamtron's primary objective is to offer a carefully curated selection of high-quality and premium products that are also budget-friendly. We are committed to ensuring customer satisfaction by providing excellent service and showcasing top-notch products in the market.
-            </p>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text); margin-top: 1.5rem;">
-              Our goal is to encourage every customer to choose Lamtron products and to share their positive experiences, reinforcing the idea that Lamtron is their ideal choice.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--accent); margin-top: 2rem; font-weight: 600; letter-spacing: 0.5px;">
-              ✓ Lamtron! Crafted for Excellence! Premium quality products! Best service!
-            </p>
-          </div>
-        </div>
-      </section>
-
     </main>
 
     <footer>
@@ -513,9 +478,9 @@
           <div style="text-align: right;">
             <h3 style="margin: 0 0 1rem 0; font-size: 1rem;">Quick Links</h3>
             <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted);">
-              <li style="margin-bottom: 0.5rem;"><a href="#services" style="color: inherit; transition: color 0.2s;">Our Products</a></li>
-              <li style="margin-bottom: 0.5rem;"><a href="#about" style="color: inherit; transition: color 0.2s;">About Us</a></li>
-              <li><a href="#home" style="color: inherit; transition: color 0.2s;">Home</a></li>
+              <li style="margin-bottom: 0.5rem;"><a href="products.html" style="color: inherit; transition: color 0.2s;">Our Products</a></li>
+              <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: inherit; transition: color 0.2s;">About Us</a></li>
+              <li><a href="contact.html" style="color: inherit; transition: color 0.2s;">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -523,6 +488,7 @@
       </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
