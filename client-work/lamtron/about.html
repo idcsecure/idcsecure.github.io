@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#07111f" />
     <title>About Lamtron | Lamtron India Pvt Ltd</title>
     <meta
       name="description"
       content="Learn more about Lamtron India's mission, vision, and quality-driven approach to home appliances."
     />
     <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.add('js');</script>
     <style>
       :root {
         --bg: #07111f;
@@ -61,29 +63,11 @@
         padding: 3rem 0;
       }
 
-      @keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
       .feature-grid {
         display: grid;
         gap: 1.5rem;
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
-
-      .feature-card {
-        padding: 1.5rem;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        transition: transform 220ms ease, box-shadow 220ms ease;
-        will-change: transform;
-        animation: cardIn 0.55s cubic-bezier(.2,.9,.3,1) both;
-      }
-
-      .feature-card:nth-child(1) { animation-delay: 0.04s; }
-      .feature-card:nth-child(2) { animation-delay: 0.09s; }
-      .feature-card:nth-child(3) { animation-delay: 0.14s; }
-
-      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.45); }
 
       .feature-card {
         padding: 1.5rem;
@@ -102,7 +86,14 @@
       }
 
       @media (max-width: 860px) {
+        .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 560px) {
         .feature-grid { grid-template-columns: 1fr; }
+        .feature-card { padding: 1.2rem; }
+        .section { padding: 2rem 0; }
+        .container { padding: 1.5rem 0; }
       }
     </style>
   </head>
@@ -124,7 +115,7 @@
                 <a href="products.html#electronics">Electronics</a>
                 <a href="products.html#electric-items">Electric Items</a>
                 <a href="products.html#personal-care">Personal Care</a>
-                <a href="products.html#lighting-devices">Lighting Devices</a>
+                <a href="products.html#lighting">Lighting Devices</a>
               </div>
             </div>
             <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
@@ -149,7 +140,7 @@
             <a href="products.html#electronics">Electronics</a>
             <a href="products.html#electric-items">Electric Items</a>
             <a href="products.html#personal-care">Personal Care</a>
-            <a href="products.html#lighting-devices">Lighting Devices</a>
+            <a href="products.html#lighting">Lighting Devices</a>
           </div>
         </div>
         <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
@@ -160,20 +151,20 @@
     <main>
       <section class="section">
         <div class="container">
-          <h1>About Lamtron India Pvt Ltd</h1>
-          <p>
+          <h1 class="enter-up d-1">About Lamtron India Pvt Ltd</h1>
+          <p class="enter-up d-2">
             Lamtron India Pvt Ltd is a dynamic Indian-UK collaboration company specializing in electronics, kitchen appliances, and home appliances that are specially designed for excellence.
           </p>
-          <p>
+          <p class="reveal" data-reveal="up">
             At Lamtron, we believe your home deserves products that combine innovation, durability, and elegant design. Every Lamtron appliance is crafted with precision engineering and rigorous quality checks to deliver performance you can rely on, day after day.
           </p>
-          <p>
+          <p class="reveal" data-reveal="up" style="--reveal-delay: 0.1s;">
             From modern kitchen essentials to energy-efficient home electronics, our mission is to make everyday living smarter, easier, and more comfortable for Indian households.
           </p>
-          <p>
+          <p class="reveal" data-reveal="up" style="--reveal-delay: 0.2s;">
             With a focus on "Crafted for Excellence", we partner with leading manufacturers and uphold the highest standards in quality, safety, and after-sales service.
           </p>
-          <p class="highlight">
+          <p class="highlight reveal" data-reveal="fade" style="--reveal-delay: 0.3s;">
             Lamtron - Empowering Homes. Enhancing Lifestyles.
           </p>
         </div>
@@ -181,8 +172,8 @@
 
       <section class="section" id="why-choose-us">
         <div class="container">
-          <h2>Why Choose Lamtron?</h2>
-          <div class="feature-grid">
+          <h2 class="reveal anim-heading" data-reveal="left">Why Choose Lamtron?</h2>
+          <div class="feature-grid stagger">
             <div class="feature-card">
               <h3>Crafted for Excellence</h3>
               <p>Premium products built with strict quality control and attention to detail.</p>
@@ -201,14 +192,14 @@
 
       <section class="section" id="vision-goal">
         <div class="container">
-          <h2>Our Vision & Goal</h2>
-          <p>
+          <h2 class="reveal anim-heading" data-reveal="left">Our Vision & Goal</h2>
+          <p class="reveal" data-reveal="up">
             Lamtron's primary objective is to offer a carefully curated selection of high-quality and premium products that are also budget-friendly. We are committed to ensuring customer satisfaction by providing excellent service and showcasing top-notch products in the market.
           </p>
-          <p>
+          <p class="reveal" data-reveal="up" style="--reveal-delay: 0.1s;">
             Our goal is to encourage every customer to choose Lamtron products and to share their positive experiences, reinforcing the idea that Lamtron is their ideal choice.
           </p>
-          <p class="highlight">
+          <p class="highlight reveal" data-reveal="fade" style="--reveal-delay: 0.2s;">
             ✓ Lamtron! Crafted for Excellence! Premium quality products! Best service!
           </p>
         </div>

@@ -109,28 +109,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close mobile menu when clicking a nav link (except dropdown toggles)
   if (mobileMenu) {
-    mobileMenu.querySelectorAll('.nav-link[href]').forEach((link) => {
+    mobileMenu.querySelectorAll('.nav-link[href], .dropdown-menu a, .nav-cta').forEach((link) => {
       link.addEventListener('click', () => {
+        // Don't close if a parent dropdown menu is being toggled
+        if (link.classList.contains('dropdown-toggle')) return;
         toggleMobileMenu(false);
-      });
-    });
-    mobileMenu.querySelectorAll('.dropdown-menu a').forEach((link) => {
-      link.addEventListener('click', () => {
-        toggleMobileMenu(false);
+
+        // Reset any open dropdowns inside the mobile menu
+        mobileMenu.querySelectorAll('.dropdown-menu.open').forEach((menu) => {
+          menu.classList.remove('open');
+        });
+        mobileMenu.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach((toggle) => {
+          toggle.setAttribute('aria-expanded', 'false');
+        });
       });
     });
   }
 
+  // Reset mobile menu state when resizing from mobile to desktop
+  const handleResize = () => {
+    if (window.innerWidth > 860 && mobileMenu.classList.contains('open')) {
+      toggleMobileMenu(false);
+    }
+  };
+  window.addEventListener('resize', handleResize, { passive: true });
+
   // ===== ACTIVE PAGE DETECTION =====
   const setActivePage = () => {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const fullPath = window.location.pathname;
+    const currentPath = fullPath.split('/').pop() || 'index.html';
     const pageMap = {
       'index.html': 'home',
       'about.html': 'about',
       'products.html': 'products',
       'contact.html': 'contact',
     };
-    const currentPage = pageMap[currentPath] || '';
+    // Sub-pages (products/home-appliances.html, etc.) belong to the products section
+    let currentPage = pageMap[currentPath] || '';
+    if (fullPath.includes('/products/')) {
+      currentPage = 'products';
+    }
 
     document.querySelectorAll('.nav-link, .dropdown-toggle').forEach((el) => {
       const page = el.getAttribute('data-page');
@@ -188,4 +206,30 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollToHash(window.location.hash);
     }
   }, 300);
+
+  // ===== GLOBAL SCROLL REVEAL ANIMATIONS =====
+  // Unified reveal system for .reveal, .anim-heading, and .stagger elements
+  // Works across all pages. Falls back gracefully if IntersectionObserver is absent.
+  const revealTargets = document.querySelectorAll('.reveal, .anim-heading, .stagger');
+
+  if (revealTargets.length) {
+    if (!('IntersectionObserver' in window)) {
+      // No observer support: reveal everything immediately
+      revealTargets.forEach((el) => el.classList.add('visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px',
+      });
+
+      revealTargets.forEach((el) => revealObserver.observe(el));
+    }
+  }
 });

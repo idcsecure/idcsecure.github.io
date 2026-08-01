@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#07111f" />
     <title>Products | Lamtron India Pvt Ltd</title>
     <meta name="description" content="Explore Lamtron’s diverse range of home appliances, kitchen essentials, electronics, personal care products, and lighting solutions." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.add('js');</script>
     <style>
       body {
         margin: 0;
@@ -29,9 +31,86 @@
         color: var(--muted);
         max-width: 700px;
       }
+      .section-heading-top {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.4rem;
+      }
+      .section-heading-top h2 {
+        margin-bottom: 0;
+      }
+      .view-all-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--accent);
+        border: 1px solid rgba(94, 234, 212, 0.3);
+        background: rgba(94, 234, 212, 0.06);
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        white-space: nowrap;
+      }
+      .view-all-btn:hover {
+        background: rgba(94, 234, 212, 0.14);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(94, 234, 212, 0.15);
+      }
+      .view-all-btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+      @media (max-width: 560px) {
+        .view-all-btn {
+          width: 100%;
+          justify-content: center;
+          padding: 0.7rem 1.1rem;
+        }
+      }
       .product-intro {
         color: var(--muted);
         margin-bottom: 1.2rem;
+      }
+
+      @media (max-width: 560px) {
+        .hero-panel { padding: 1.5rem 0 0.5rem; }
+        .page-intro h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+        .section-heading p { font-size: 0.95rem; }
+
+        /* Product sections: horizontal scrollable carousels on mobile */
+        .product-grid {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          gap: 1rem;
+          margin: 0 -0.75rem;
+          padding: 0 0.75rem 1rem;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .product-grid::-webkit-scrollbar {
+          display: none;
+        }
+
+        .product-grid .product-card {
+          flex: 0 0 82%;
+          min-width: 82%;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        }
+
+        .product-card h3 {
+          font-size: 1.05rem;
+        }
       }
     </style>
   </head>
@@ -90,8 +169,8 @@
       <section class="hero-panel">
         <div class="container">
           <div class="page-intro">
-            <h1>Products that power everyday living</h1>
-            <p>Lamtron brings together dependable appliances and modern essentials for homes, kitchens, workspaces, and personal care routines—carefully selected for lasting value and performance.</p>
+            <h1 class="enter-up d-1">Products that power everyday living</h1>
+            <p class="enter-up d-2">Lamtron brings together dependable appliances and modern essentials for homes, kitchens, workspaces, and personal care routines—carefully selected for lasting value and performance.</p>
           </div>
         </div>
       </section>
@@ -99,10 +178,16 @@
       <section class="section section-anchor" id="home-appliances">
         <div class="container">
           <div class="section-heading">
-            <h2>Home Appliances</h2>
-            <p>Practical, energy-conscious appliances designed to support comfort and convenience across the home.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Home Appliances</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/home-appliances.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">Practical, energy-conscious appliances designed to support comfort and convenience across the home.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Air Circulation</h3>
@@ -125,10 +210,16 @@
       <section class="section section-anchor" id="kitchen-appliances">
         <div class="container">
           <div class="section-heading">
-            <h2>Kitchen Appliances</h2>
-            <p>Modern essentials that combine usability, durability, and elegant styling for busy kitchens.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Kitchen Appliances</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/kitchen-appliances.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">Modern essentials that combine usability, durability, and elegant styling for busy kitchens.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Food Preparation</h3>
@@ -151,10 +242,16 @@
       <section class="section section-anchor" id="electronics">
         <div class="container">
           <div class="section-heading">
-            <h2>Electronics</h2>
-            <p>Smart, dependable electronic products that keep up with the pace of modern homes and offices.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Electronics</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/electronics.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">Smart, dependable electronic products that keep up with the pace of modern homes and offices.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Connectivity</h3>
@@ -177,10 +274,16 @@
       <section class="section section-anchor" id="electric-items">
         <div class="container">
           <div class="section-heading">
-            <h2>Electric Items</h2>
-            <p>A broad assortment of electrical essentials for reliable performance at home and work.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Electric Items</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/electric-items.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">A broad assortment of electrical essentials for reliable performance at home and work.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Portable Essentials</h3>
@@ -203,10 +306,16 @@
       <section class="section section-anchor" id="personal-care">
         <div class="container">
           <div class="section-heading">
-            <h2>Personal Care</h2>
-            <p>Functional personal care solutions that bring comfort, grooming, and wellness into everyday life.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Personal Care</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/personal-care.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">Functional personal care solutions that bring comfort, grooming, and wellness into everyday life.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Wellness</h3>
@@ -229,10 +338,16 @@
       <section class="section section-anchor" id="lighting">
         <div class="container">
           <div class="section-heading">
-            <h2>Lighting Devices</h2>
-            <p>Stylish and efficient lighting solutions that create brighter, richer spaces for home and business.</p>
+            <div class="section-heading-top">
+              <h2 class="reveal anim-heading" data-reveal="left">Lighting Devices</h2>
+              <a class="view-all-btn reveal" data-reveal="right" href="products/lighting-devices.html">
+                View All
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="reveal" data-reveal="up">Stylish and efficient lighting solutions that create brighter, richer spaces for home and business.</p>
           </div>
-          <div class="product-grid">
+          <div class="product-grid stagger">
             <article class="product-card">
               <div class="placeholder-visual"></div>
               <h3>Interior Lighting</h3>
