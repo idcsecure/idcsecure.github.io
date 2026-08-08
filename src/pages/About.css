@@ -1,0 +1,253 @@
+.about-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.about-hero {
+  position: relative;
+  padding: 100px 20px 60px;
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+  .about-hero {
+    padding: 120px 20px 80px;
+  }
+}
+
+.about-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-hero-title {
+  font-weight: 300;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.about-hero-subtitle {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .about-hero-subtitle {
+    font-size: 18px;
+  }
+}
+
+.about-content {
+  position: relative;
+  z-index: 10;
+  padding: 60px 20px;
+  background: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    padding: 100px 20px;
+  }
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  .about-text {
+    margin-bottom: 80px;
+  }
+}
+
+.about-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .about-description {
+    font-size: 17px;
+    margin: 0 0 24px 0;
+  }
+}
+
+.about-description:last-child {
+  margin-bottom: 0;
+}
+
+.about-features {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+  .about-features {
+    margin-top: 80px;
+    padding-top: 80px;
+  }
+}
+
+.about-features-title {
+  font-weight: 300;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #000000;
+  margin: 0 0 24px 0;
+}
+
+@media (min-width: 768px) {
+  .about-features-title {
+    margin: 0 0 32px 0;
+  }
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .feature-item {
+    gap: 16px;
+    font-size: 16px;
+    padding: 16px 0;
+  }
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+.feature-item:hover {
+  color: #000000;
+  padding-left: 8px;
+}
+
+.feature-item svg {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+/* Mission Section */
+
+.about-mission {
+  margin-top: 60px;
+  padding: 24px;
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 768px) {
+  .about-mission {
+    margin-top: 80px;
+    padding: 48px;
+    border-radius: 20px;
+  }
+}
+
+.about-mission::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+}
+
+.about-mission::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 40px 40px;
+  border-color: transparent transparent #e8e8e8 transparent;
+  border-radius: 0 0 20px 0;
+}
+
+.mission-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .mission-title {
+    font-size: 24px;
+    margin: 0 0 16px 0;
+  }
+}
+
+.mission-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .mission-text {
+    font-size: 16px;
+  }
+}
+
+/* Typing Animation */
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--color-accent);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
